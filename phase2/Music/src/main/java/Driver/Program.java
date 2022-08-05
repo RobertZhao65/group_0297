@@ -29,8 +29,8 @@ public class Program {
      * @param songManager
      * @param playlistManager
      */
-    public Program(AccountManager accountManager, SongManager songManager, PlaylistManager playlistManager){
-        this.running =true;
+    public Program(AccountManager accountManager, SongManager songManager, PlaylistManager playlistManager) {
+        this.running = true;
         AM = accountManager;
         SM = songManager;
         PM = playlistManager;
@@ -39,35 +39,37 @@ public class Program {
 
     /**
      * Checks whether program is running
+     *
      * @return true if program is running
      */
-    public boolean isRunning(){
+    public boolean isRunning() {
         return running;
     }
 
     /**
      * Stops the program from running
      */
-    public void stopRunning(){
+    public void stopRunning() {
         running = false;
     }
 
     /**
      * Gets location of event
+     *
      * @return location
      */
-    public int getLocation(){
+    public int getLocation() {
         return location;
     }
 
-    public void setLocation(int i){
+    public void setLocation(int i) {
         this.location = i;
     }
 
     /**
      * Display login menu of program
      */
-    public void loginDisplay(){
+    public void loginDisplay() {
         location = 0;
         System.out.println("you are now at the login menu");
     }
@@ -75,7 +77,7 @@ public class Program {
     /**
      * Display main menu of program
      */
-    public void mainMenu(){
+    public void mainMenu() {
         location = 1;
         System.out.println("you are now at the main menu");
     }
@@ -83,21 +85,20 @@ public class Program {
     /**
      * Display all songs
      */
-    public void allSongs(){
+    public void allSongs() {
         location = 2;
-        if(!SM.getAllSongs().isEmpty()){
-            for(Song song : SM.getAllSongs()){
+        if (!SM.getAllSongs().isEmpty()) {
+            for (Song song : SM.getAllSongs()) {
                 System.out.println(song.getId() + ". " + song.artistTitleAlbum());
             }
-        }
-        else{
+        } else {
             System.out.println("there are no songs here...");
         }
 
         setCurrentPlaylist(PM.getAllSongs());
     }
 
-    private void setCurrentPlaylist(Playlist playlist){
+    private void setCurrentPlaylist(Playlist playlist) {
         currPlaylist = playlist;
     }
 
@@ -125,72 +126,72 @@ public class Program {
     /**
      * Displays login message
      */
-    public void loginMsg(){
+    public void loginMsg() {
         System.out.println("logged in as " + AM.getActiveUser());
     }
 
     /**
      * Displays logout message
      */
-    public void logoutMsg(){
+    public void logoutMsg() {
         System.out.println("logging out of " + AM.getActiveUser());
     }
 
     /**
      * Displays login failed message
      */
-    public void loginFail(){
+    public void loginFail() {
         System.out.println("login failed");
     }
 
     /**
      * Displays exit program message
      */
-    public void exitMsg(){
+    public void exitMsg() {
         System.out.println("exiting program");
     }
 
     /**
      * Displays new account created successfully message
      */
-    public void createSuccess(){
+    public void createSuccess() {
         System.out.println("account created successfully");
     }
 
     /**
      * Displays create new account failed message
      */
-    public void createFail(){
+    public void createFail() {
         System.out.println("an account with this username already exists");
     }
 
     /**
      * Displays account deleted message
      */
-    public void deleteSuccess(){
+    public void deleteSuccess() {
         System.out.println("account deleted successfully");
     }
 
     /**
      * Displays account already deleted message
      */
-    public void deleteFail(){
+    public void deleteFail() {
         System.out.println("account couldn't be found");
     }
 
     /**
      * Displays login history of account
      */
-    public void getLoginHistory(){
+    public void getLoginHistory() {
         System.out.println(AM.getUserLoginHistory(AM.getActiveUser()));
     }
 
-    public SongManager getSongManager(){
+    public SongManager getSongManager() {
         return this.SM;
     }
 
-    public AccountManager getAccountManager(){
-        return this.AM;
+    public PlaylistManager getPM() {
+        return this.PM;
     }
 
 //    //TODO: rework this

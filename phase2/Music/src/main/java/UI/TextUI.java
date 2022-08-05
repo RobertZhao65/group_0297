@@ -4,6 +4,8 @@ import Driver.AccountManager;
 import MusicUtil.Song;
 import MusicUtil.SongManager;
 
+import java.util.List;
+
 public class TextUI implements UIMethods{
     private AccountManager AM;
     private SongManager SM;
@@ -62,6 +64,16 @@ public class TextUI implements UIMethods{
         }
         else{
             System.out.println("there are no songs here...");
+        }
+    }
+    public void displayPlaylist(List<Song> playlist){
+        if(!playlist.isEmpty()){
+            for(Song s: playlist){
+                System.out.println(s.getId() + ". " + s.artistTitleAlbum());
+            }
+        }
+        else {
+            System.out.println("This playlist is empty...");
         }
     }
 }
