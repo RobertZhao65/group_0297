@@ -9,7 +9,7 @@ import MusicUtil.SongManager;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        AccountManager AM = new AccountManager("src/accounts.txt");
+        AccountManager AM = new AccountManager("phase2/Music/src/accounts.txt");
         SongManager SM = new SongManager();
         SM.initializeSongs();
         PlaylistManager PM = new PlaylistManager(SM);
@@ -21,6 +21,6 @@ public class Main {
             String input = in.nextLine();
             CC.executeCommand(AM, p, input);
         }
-        AM.updateLog("src/accounts.txt");
+        AM.updateLog("phase2/Music/src/accounts.txt");
     }
 }

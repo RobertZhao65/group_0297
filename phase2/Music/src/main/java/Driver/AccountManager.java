@@ -12,7 +12,12 @@ import java.util.Scanner;
 import java.io.*;
 
 /**
- * Manages all the accounts
+ * Account manager implements functions to manipulate account
+ * including create/update/delete/active account, authenticate user etc
+ *
+ * @author Ben Li, Jennifer Xi, Robert Zhao
+ * @version 2.0
+ * @since 2022-07-10
  */
 
 public class AccountManager {
@@ -85,8 +90,7 @@ public class AccountManager {
     }
 
     /**
-     * Creates new account
-     *
+     * This function is to create an account by name and password    *
      * @param username username of new account
      * @param password password of new account
      * @return true if the list of all accounts does not contain new account, false otherwise

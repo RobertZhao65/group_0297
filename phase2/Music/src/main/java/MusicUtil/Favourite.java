@@ -33,6 +33,10 @@ public class Favourite extends Playlist {
         this.recipients = new ArrayList<>();
     }
 
+    public String getOwner() {
+        return owner;
+    }
+
     /**
      * Set whether playlist is sharable, false by default
      *
