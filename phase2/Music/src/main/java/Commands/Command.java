@@ -2,6 +2,7 @@ package Commands;
 
 import Driver.Program;
 import Driver.AccountManager;
+import UI.UIMethods;
 
 import java.util.List;
 
@@ -28,6 +29,8 @@ public abstract class Command {
      * @throws CommandException if invalid argument
      */
     abstract public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException;
+
+    abstract public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException;
 
     /**
      * Check location of command line

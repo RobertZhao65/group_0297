@@ -189,6 +189,10 @@ public class Program {
         return this.SM;
     }
 
+    public AccountManager getAccountManager(){
+        return this.AM;
+    }
+
 //    //TODO: rework this
 //
 //    /**

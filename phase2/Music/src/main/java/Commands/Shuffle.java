@@ -2,6 +2,7 @@ package Commands;
 
 import Driver.AccountManager;
 import Driver.Program;
+import UI.UIMethods;
 
 import java.util.List;
 
@@ -24,6 +25,12 @@ public class Shuffle extends Command{
      * @throws CommandException if invalid argument or location
      */
     public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException {
+        checkArguments(args);
+        checkLocation(p);
+        // p.shuffle();
+    }
+
+    public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocation(p);
         // p.shuffle();

@@ -3,6 +3,7 @@ package Commands;
 import Driver.AccountManager;
 import Driver.Program;
 import UI.TextUI;
+import UI.UIMethods;
 
 import java.util.List;
 
@@ -30,6 +31,22 @@ public class Create extends Command{
         String username = args.get(0);
         String password = args.get(1);
         TextUI UI = new TextUI(AM, p.getSongManager());
+        if(AM.createAccount(username, password)){
+            UI.accountCreateSuccess();
+            p.loginDisplay();
+        }
+        else{
+            UI.accountCreateFail();
+            p.loginDisplay();
+        }
+    }
+
+    public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
+        checkArguments(args);
+        checkLocation(p);
+        AccountManager AM = p.getAccountManager();
+        String username = args.get(0);
+        String password = args.get(1);
         if(AM.createAccount(username, password)){
             UI.accountCreateSuccess();
             p.loginDisplay();

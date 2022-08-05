@@ -2,6 +2,7 @@ package Commands;
 
 import Driver.AccountManager;
 import Driver.Program;
+import UI.UIMethods;
 
 import java.util.List;
 
@@ -27,5 +28,11 @@ public class AllSongs extends Command{
         checkArguments(args);
         checkLocation(p);
         p.allSongs();
+    }
+
+    public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
+        checkArguments(args);
+        checkLocation(p);
+        // p.skipForward();
     }
 }

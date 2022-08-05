@@ -3,6 +3,7 @@ package Commands;
 import Driver.Program;
 import Driver.AccountManager;
 import UI.TextUI;
+import UI.UIMethods;
 
 import java.util.List;
 
@@ -29,6 +30,13 @@ public class Exit extends Command {
         checkLocation(p);
         p.stopRunning();
         TextUI UI = new TextUI(AM, p.getSongManager());
+        UI.exitMsg();
+    }
+
+    public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
+        checkArguments(args);
+        checkLocation(p);
+        p.stopRunning();
         UI.exitMsg();
     }
 }

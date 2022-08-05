@@ -3,6 +3,7 @@ package Commands;
 import Driver.AccountManager;
 import Driver.Program;
 import UI.TextUI;
+import UI.UIMethods;
 
 import java.util.List;
 
@@ -30,6 +31,22 @@ public class Delete extends Command{
         checkPerms(AM);
         String username = args.get(0);
         TextUI UI = new TextUI(AM, p.getSongManager());
+        if(AM.deleteAccount(username)){
+            UI.accountDeleteSuccess();
+            p.mainMenu();
+        }
+        else{
+            UI.accountDeleteFail();
+            p.mainMenu();
+        }
+    }
+
+    public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
+        checkArguments(args);
+        checkLocation(p);
+        AccountManager AM = p.getAccountManager();
+        checkPerms(AM);
+        String username = args.get(0);
         if(AM.deleteAccount(username)){
             UI.accountDeleteSuccess();
             p.mainMenu();

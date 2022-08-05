@@ -3,7 +3,7 @@ package MusicUtil;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import jaco.mp3.player.MP3Player;
+// import jaco.mp3.player.MP3Player;
 
 /**
  * A playlist containing songs
@@ -124,11 +124,11 @@ public abstract class Playlist {
      *
      * @param player MP3 player
      */
-    public void play(MP3Player player) {
-        for(Song song : musics){
-            player.addToPlayList(new File(song.getFilepath()));
-        }
-        player.play();
-    }
+//    public void play(MP3Player player) {
+//        for(Song song : musics){
+//            player.addToPlayList(new File(song.getFilepath()));
+//        }
+//        player.play();
+//    }
 
 }

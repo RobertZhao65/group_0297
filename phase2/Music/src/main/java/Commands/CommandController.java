@@ -2,6 +2,7 @@ package Commands;
 
 import Driver.Program;
 import Driver.AccountManager;
+import UI.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,10 +23,11 @@ public class CommandController {
      */
     public void executeCommand(AccountManager AM, Program p, String input){
         List<String> args = getArgs(input);
+        TextUI UI = new TextUI(p.getAccountManager(), p.getSongManager());
         String[] split = input.split(" ");
         try{
             Command command = Constants.COMMAND_MAP.get(split[0]);
-            command.executeCommand(AM, p, args);
+            command.executeCommand(p, UI, args);
         }
         catch(NullPointerException e){
             System.out.println("command not found...");
