@@ -122,69 +122,6 @@ public class Program {
 //        player.stop();
 //    }
 
-    /**
-     * Displays login message
-     */
-    public void loginMsg(){
-        System.out.println("logged in as " + AM.getActiveUser());
-    }
-
-    /**
-     * Displays logout message
-     */
-    public void logoutMsg(){
-        System.out.println("logging out of " + AM.getActiveUser());
-    }
-
-    /**
-     * Displays login failed message
-     */
-    public void loginFail(){
-        System.out.println("login failed");
-    }
-
-    /**
-     * Displays exit program message
-     */
-    public void exitMsg(){
-        System.out.println("exiting program");
-    }
-
-    /**
-     * Displays new account created successfully message
-     */
-    public void createSuccess(){
-        System.out.println("account created successfully");
-    }
-
-    /**
-     * Displays create new account failed message
-     */
-    public void createFail(){
-        System.out.println("an account with this username already exists");
-    }
-
-    /**
-     * Displays account deleted message
-     */
-    public void deleteSuccess(){
-        System.out.println("account deleted successfully");
-    }
-
-    /**
-     * Displays account already deleted message
-     */
-    public void deleteFail(){
-        System.out.println("account couldn't be found");
-    }
-
-    /**
-     * Displays login history of account
-     */
-    public void getLoginHistory(){
-        System.out.println(AM.getUserLoginHistory(AM.getActiveUser()));
-    }
-
     public SongManager getSongManager(){
         return this.SM;
     }

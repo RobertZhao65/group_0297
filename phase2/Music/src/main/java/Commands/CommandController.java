@@ -12,18 +12,18 @@ import java.util.List;
  * Executes command accordingly with provided arguments
  */
 
-public class CommandController {
+public class CommandController{
 
     /**
      * Executes the provided command
      *
-     * @param AM account manager
+     * @param UI class that handles UI
      * @param p program
      * @param input input argument
      */
-    public void executeCommand(AccountManager AM, Program p, String input){
+    public void executeCommand(UIMethods UI, Program p, String input){
         List<String> args = getArgs(input);
-        TextUI UI = new TextUI(p.getAccountManager(), p.getSongManager());
+        // TextUI UI = new TextUI(p.getAccountManager(), p.getSongManager());
         String[] split = input.split(" ");
         try{
             Command command = Constants.COMMAND_MAP.get(split[0]);

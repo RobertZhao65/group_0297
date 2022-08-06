@@ -6,6 +6,8 @@ import java.util.Scanner;
 import Commands.CommandController;
 import MusicUtil.PlaylistManager;
 import MusicUtil.SongManager;
+import UI.TextUI;
+import UI.UIMethods;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -16,10 +18,11 @@ public class Main {
         Program p = new Program(AM, SM, PM);
         Scanner in = new Scanner(System.in);
         CommandController CC = new CommandController();
+        TextUI UI = new TextUI(AM, SM);
         p.loginDisplay();
         while(p.isRunning()){
             String input = in.nextLine();
-            CC.executeCommand(AM, p, input);
+            CC.executeCommand(UI, p, input);
         }
         AM.updateLog("phase2/Music/src/accounts.txt");
     }
