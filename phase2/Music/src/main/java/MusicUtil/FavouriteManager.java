@@ -18,6 +18,7 @@ public class FavouriteManager extends PlaylistManager{
      * @param owner owner of playlist
      * @param sharable whether playlist is sharable
      */
+    @Override
     public void CreateFavorite(String owner, boolean sharable) {
         Favourite f = new Favourite(owner);
         f.setSharable(sharable);
@@ -30,9 +31,10 @@ public class FavouriteManager extends PlaylistManager{
      * @param owner owner of favourite playlist
      * @return the list of favourited songs
      */
-    public List OwnerGetFavMusic(String owner) {
+    @Override
+    public Favourite OwnerGetFavMusic(String owner) {
         Favourite f = favourites.get(owner);
-        return f.getMusics();
+        return f;
     }
 
     /**
@@ -42,6 +44,7 @@ public class FavouriteManager extends PlaylistManager{
      * @param songID ID of the target song
      * @return true if song has been removed from favourite playlist
      */
+
     public boolean removeFavMusic(String owner, Song songID) {
         Favourite f = favourites.get(owner);
         if (f.remove(songID)) {

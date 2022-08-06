@@ -5,7 +5,9 @@ public class test {
     @Test
     public void testSometing() {
         Song s = new Song("something");
-        assert s.getName().equals("new");
+        assert s.getName().equals("something");
 
     }
+
+
 }

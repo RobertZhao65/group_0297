@@ -1,9 +1,8 @@
 package Driver;
 
-import MusicUtil.Playlist;
-import MusicUtil.PlaylistManager;
-import MusicUtil.Song;
-import MusicUtil.SongManager;
+import MusicUtil.*;
+
+import java.util.List;
 // import jaco.mp3.player.MP3Player;
 
 /**
@@ -98,8 +97,17 @@ public class Program {
         setCurrentPlaylist(PM.getAllSongs());
     }
 
-    private void setCurrentPlaylist(Playlist playlist) {
+    public void setCurrentPlaylist(Playlist playlist) {
         currPlaylist = playlist;
+    }
+
+    public void chooseSong(Integer num) {
+        List<Song> songs = currPlaylist.getMusics();
+        if(num>songs.size()|| num<1){
+            System.out.println("Please insert the correct number");
+        }else{
+            //TODO: finish the operation for set the music selected to current song
+        }
     }
 
 //    /**
@@ -194,6 +202,29 @@ public class Program {
         return this.PM;
     }
 
+    public void createFavourite(String user) {
+        PM.CreateFavorite(user, false);
+    }
+
+    public AccountManager getAccountManager() {
+        return this.AM;
+    }
+
+    public List<Album> getAlbum(List<String> args) {
+        String type = args.get(0);
+        String keyword = args.get(1);
+        switch (type) {
+            case "name":
+                return PM.getAlbumByName(keyword);
+            case "genre":
+                return PM.getAlbumByGenre(keyword);
+            case "artist":
+                return PM.getAlbumByArtist(keyword);
+            default:
+                System.out.println("The type of keyword is incorrect...");
+        }
+        return null;
+    }
 //    //TODO: rework this
 //
 //    /**

@@ -33,6 +33,7 @@ public class CreateAdmin extends Command{
         String password = args.get(1);
         TextUI UI = new TextUI(AM, p.getSongManager());
         if(AM.createAdminAccount(username, password)){
+            p.createFavourite(username);
             UI.accountCreateSuccess();
             p.mainMenu();
         }

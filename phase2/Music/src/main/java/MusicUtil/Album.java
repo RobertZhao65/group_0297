@@ -14,11 +14,11 @@ public class Album extends Playlist {
     /**
      * Construct album with initialized name, artist, genre, year and songs
      *
-     * @param name name of album
+     * @param name   name of album
      * @param artist artist of album
-     * @param genre genre of album
-     * @param year year published
-     * @param songs list of songs in the album
+     * @param genre  genre of album
+     * @param year   year published
+     * @param songs  list of songs in the album
      */
     public Album(String name, String artist, String genre, int year, List<Song> songs) {
         super(name);
@@ -69,5 +69,10 @@ public class Album extends Playlist {
      */
     public String getArtist() {
         return artist;
+    }
+
+    @Override
+    public String toString() {
+        return getName() + " By " + artist;
     }
 }
