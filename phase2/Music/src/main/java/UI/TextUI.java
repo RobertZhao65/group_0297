@@ -1,23 +1,29 @@
 package UI;
 
 import Driver.AccountManager;
+import MusicUtil.Album;
 import MusicUtil.Song;
 import MusicUtil.SongManager;
 
-public class TextUI implements UIMethods{
+import java.util.List;
+
+public class TextUI implements UIMethods {
     private AccountManager AM;
     private SongManager SM;
-    public TextUI(AccountManager AM, SongManager SM){
+
+    public TextUI(AccountManager AM, SongManager SM) {
         this.AM = AM;
         this.SM = SM;
     }
-    public void displayLoginMenu(){
+
+    public void displayLoginMenu() {
         System.out.println("You are now at the login menu");
     }
 
-    public void displayMainMenu(){
+    public void displayMainMenu() {
         System.out.println("You are now at the main menu");
     }
+
     public void loginSuccess() {
         System.out.println("Logged in as " + AM.getActiveUser());
     }
@@ -55,13 +61,44 @@ public class TextUI implements UIMethods{
     }
 
     public void displayAllSongs() {
-        if(!SM.getAllSongs().isEmpty()){
-            for(Song song : SM.getAllSongs()){
+        if (!SM.getAllSongs().isEmpty()) {
+            for (Song song : SM.getAllSongs()) {
                 System.out.println(song.getId() + ". " + song.artistTitleAlbum());
             }
-        }
-        else{
+        } else {
             System.out.println("there are no songs here...");
+        }
+    }
+
+    @Override
+    public void displayPlaylist(List<Song> playlist) {
+        try {
+            playlist.isEmpty();
+        } catch (NullPointerException e) {
+            System.out.println("This playlist does not exists...");
+            return;
+        }
+        if (!playlist.isEmpty()) {
+            for (Song s : playlist) {
+                System.out.println(s.getId() + ". " + s.artistTitleAlbum());
+            }
+        } else {
+            System.out.println("This playlist is empty...");
+        }
+    }
+
+    @Override
+    public void displayAlbums(List<Album> albums) {
+        try {
+            albums.isEmpty();
+        } catch (NullPointerException e) {
+            System.out.println("There's no matching result...");
+            return;
+        }
+
+        for (Album a : albums) {
+            System.out.println(a.toString());
+
         }
     }
 }

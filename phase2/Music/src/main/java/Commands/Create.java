@@ -48,6 +48,7 @@ public class Create extends Command{
         String username = args.get(0);
         String password = args.get(1);
         if(AM.createAccount(username, password)){
+            p.createFavourite(username);
             UI.accountCreateSuccess();
             p.loginDisplay();
         }

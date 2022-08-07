@@ -36,12 +36,13 @@ public class AlbumManager extends PlaylistManager {
      * @return the list of songs in that album
      */
     public List getAlbumByName(String name) {
+        List<Album> result = new ArrayList<>();
         for (Album a : albums) {
             if (name.equals(a.getName())) {
-                return a.getMusics();
+                result.add(a);
             }
         }
-        return null;
+        return result;
     }
 
     /**

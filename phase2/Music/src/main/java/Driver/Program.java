@@ -1,9 +1,8 @@
 package Driver;
 
-import MusicUtil.Playlist;
-import MusicUtil.PlaylistManager;
-import MusicUtil.Song;
-import MusicUtil.SongManager;
+import MusicUtil.*;
+
+import java.util.List;
 // import jaco.mp3.player.MP3Player;
 
 /**
@@ -29,8 +28,8 @@ public class Program {
      * @param songManager
      * @param playlistManager
      */
-    public Program(AccountManager accountManager, SongManager songManager, PlaylistManager playlistManager){
-        this.running =true;
+    public Program(AccountManager accountManager, SongManager songManager, PlaylistManager playlistManager) {
+        this.running = true;
         AM = accountManager;
         SM = songManager;
         PM = playlistManager;
@@ -39,35 +38,37 @@ public class Program {
 
     /**
      * Checks whether program is running
+     *
      * @return true if program is running
      */
-    public boolean isRunning(){
+    public boolean isRunning() {
         return running;
     }
 
     /**
      * Stops the program from running
      */
-    public void stopRunning(){
+    public void stopRunning() {
         running = false;
     }
 
     /**
      * Gets location of event
+     *
      * @return location
      */
-    public int getLocation(){
+    public int getLocation() {
         return location;
     }
 
-    public void setLocation(int i){
+    public void setLocation(int i) {
         this.location = i;
     }
 
     /**
      * Display login menu of program
      */
-    public void loginDisplay(){
+    public void loginDisplay() {
         location = 0;
         System.out.println("you are now at the login menu");
     }
@@ -75,7 +76,7 @@ public class Program {
     /**
      * Display main menu of program
      */
-    public void mainMenu(){
+    public void mainMenu() {
         location = 1;
         System.out.println("you are now at the main menu");
     }
@@ -83,22 +84,30 @@ public class Program {
     /**
      * Display all songs
      */
-    public void allSongs(){
+    public void allSongs() {
         location = 2;
-        if(!SM.getAllSongs().isEmpty()){
-            for(Song song : SM.getAllSongs()){
+        if (!SM.getAllSongs().isEmpty()) {
+            for (Song song : SM.getAllSongs()) {
                 System.out.println(song.getId() + ". " + song.artistTitleAlbum());
             }
-        }
-        else{
+        } else {
             System.out.println("there are no songs here...");
         }
 
         setCurrentPlaylist(PM.getAllSongs());
     }
 
-    private void setCurrentPlaylist(Playlist playlist){
+    public void setCurrentPlaylist(Playlist playlist) {
         currPlaylist = playlist;
+    }
+
+    public void chooseSong(Integer num) {
+        List<Song> songs = currPlaylist.getMusics();
+        if(num>songs.size()|| num<1){
+            System.out.println("Please insert the correct number");
+        }else{
+            //TODO: finish the operation for set the music selected to current song
+        }
     }
 
 //    /**
@@ -126,10 +135,33 @@ public class Program {
         return this.SM;
     }
 
-    public AccountManager getAccountManager(){
+    public PlaylistManager getPM() {
+        return this.PM;
+    }
+
+    public void createFavourite(String user) {
+        PM.CreateFavorite(user, false);
+    }
+
+    public AccountManager getAccountManager() {
         return this.AM;
     }
 
+    public List<Album> getAlbum(List<String> args) {
+        String type = args.get(0);
+        String keyword = args.get(1);
+        switch (type) {
+            case "name":
+                return PM.getAlbumByName(keyword);
+            case "genre":
+                return PM.getAlbumByGenre(keyword);
+            case "artist":
+                return PM.getAlbumByArtist(keyword);
+            default:
+                System.out.println("The type of keyword is incorrect...");
+        }
+        return null;
+    }
 //    //TODO: rework this
 //
 //    /**

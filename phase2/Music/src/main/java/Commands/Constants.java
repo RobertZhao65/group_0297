@@ -1,6 +1,6 @@
 package Commands;
 
-import java.util.*;
+import java.util.Hashtable;
 
 /**
  * Constant variables in the program
@@ -13,7 +13,7 @@ public class Constants {
      */
     public static final Hashtable<String, Command> COMMAND_MAP = new Hashtable<String, Command>();
 
-    static{
+    static {
         COMMAND_MAP.put("login", new Login());
         COMMAND_MAP.put("exit", new Exit());
         COMMAND_MAP.put("create", new Create());
@@ -29,5 +29,7 @@ public class Constants {
         COMMAND_MAP.put("backward", new SkipBackwards());
         COMMAND_MAP.put("shuffle", new Shuffle());
         COMMAND_MAP.put("repeat", new Repeat());
+        COMMAND_MAP.put("favourite", new ViewFavourite());
+        COMMAND_MAP.put("album", new ViewAlbum());
     }
 }

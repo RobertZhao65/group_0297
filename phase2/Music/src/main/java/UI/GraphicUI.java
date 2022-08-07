@@ -1,5 +1,9 @@
 package UI;
+import MusicUtil.Album;
+import MusicUtil.Song;
+
 import javax.swing.*;
+import java.util.List;
 
 public class GraphicUI implements UIMethods{
     private JFrame frame;
@@ -81,5 +85,13 @@ public class GraphicUI implements UIMethods{
 
     public void displayAllSongs() {
 
+    }
+
+    @Override
+    public void displayPlaylist(List<Song> playlist) {
+    }
+
+    @Override
+    public void displayAlbums(List<Album> albums) {
     }
 }

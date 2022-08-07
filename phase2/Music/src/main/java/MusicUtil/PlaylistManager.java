@@ -19,6 +19,7 @@ public class PlaylistManager {
 
     /**
      * Constructs playlist manager with initialized albums, favourites, playlists and song manager
+     *
      * @param SM Song manager
      */
     public PlaylistManager(SongManager SM) {
@@ -28,9 +29,6 @@ public class PlaylistManager {
         this.SM = SM;
         allSongs.add(SM.getAllSongs());
     }
-
-
-
 
 
     /**
@@ -43,12 +41,11 @@ public class PlaylistManager {
     }
 
 
-
     /**
      * Create playlist
      *
-     * @param name name of playlist
-     * @param owner owner of playlist
+     * @param name     name of playlist
+     * @param owner    owner of playlist
      * @param sharable whether playlist is sharable
      */
     public int CreatePlaylist(String name, String owner, boolean sharable) {
@@ -63,7 +60,7 @@ public class PlaylistManager {
      * Get playlist
      *
      * @param playlistID ID of the playlist
-     * @param owner owner of the playlist
+     * @param owner      owner of the playlist
      * @return the list songs from the playlist
      */
     public List OwnerGetPlaylist(int playlistID, String owner) {
@@ -77,8 +74,8 @@ public class PlaylistManager {
      * Remove song from playlist
      *
      * @param playlistID ID of the playlist
-     * @param owner owner of the playlist
-     * @param songID ID of the song to be removed
+     * @param owner      owner of the playlist
+     * @param songID     ID of the song to be removed
      * @return true if song has been removed from playlist
      */
     public boolean removeMusicInPlaylist(int playlistID, String owner, Song songID) {
@@ -96,12 +93,12 @@ public class PlaylistManager {
      * Share playlist
      *
      * @param playlistID ID of the playlist
-     * @param owner owner of the playlist
-     * @param recipient recipients of the shared playlist
+     * @param owner      owner of the playlist
+     * @param recipient  recipients of the shared playlist
      */
-    public void sharePlaylist(int playlistID,String owner, String recipient) {
+    public void sharePlaylist(int playlistID, String owner, String recipient) {
         CustomPlaylist c = playlists.get(playlistID);
-        if(c.Owner.equals(owner)){
+        if (c.Owner.equals(owner)) {
             c.addRecipient(recipient);
             playlists.replace(playlistID, c);
         }
@@ -111,9 +108,9 @@ public class PlaylistManager {
      * Set playlist to public
      *
      * @param playlistID ID of the playlist
-     * @param owner owner of the playlist
+     * @param owner      owner of the playlist
      */
-    public void setPlaylistPublic(int playlistID,String owner) {
+    public void setPlaylistPublic(int playlistID, String owner) {
         CustomPlaylist c = playlists.get(playlistID);
         c.setSharable(true);
         playlists.replace(playlistID, c);
@@ -124,7 +121,7 @@ public class PlaylistManager {
      * User can access shared playlist
      *
      * @param playlistID ID of playlist
-     * @param user user
+     * @param user       user
      * @return the list of shared songs
      */
     public List othersAccessSharedPlaylist(int playlistID, String user) {
@@ -136,5 +133,24 @@ public class PlaylistManager {
         return null;
     }
 
+    public void CreateFavorite(String owner, boolean sharable) {
+        return;
+    }
+
+    public Favourite OwnerGetFavMusic(String owner) {
+        return null;
+    }
+
+    public List getAlbumByName(String name) {
+        return null;
+    }
+
+    public List getAlbumByGenre(String genre) {
+        return null;
+    }
+
+    public List getAlbumByArtist(String artist) {
+        return null;
+    }
 }
 

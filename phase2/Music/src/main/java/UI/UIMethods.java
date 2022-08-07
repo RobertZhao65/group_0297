@@ -5,8 +5,14 @@ package UI;
  *
  * @author Ben Li
  */
+import MusicUtil.Album;
+import MusicUtil.Song;
+
+import java.util.List;
+
 public interface UIMethods {
     public void displayLoginMenu();
+
     public void displayMainMenu();
 
     /**
@@ -53,5 +59,10 @@ public interface UIMethods {
      * Display the currently logged-in user's login history
      */
     public void displayLoginHistory();
+
     public void displayAllSongs();
+
+    public void displayPlaylist(List<Song> f);
+
+    public void displayAlbums(List<Album> albums);
 }
