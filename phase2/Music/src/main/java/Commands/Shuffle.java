@@ -33,6 +33,6 @@ public class Shuffle extends Command{
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocation(p);
-        // p.shuffle();
+        p.getPlayer().shuffle();
     }
 }

@@ -3,7 +3,7 @@ package Driver;
 import MusicUtil.*;
 
 import java.util.List;
-// import jaco.mp3.player.MP3Player;
+import MusicUtil.MusicPlayer;
 
 /**
  * Main program
@@ -20,6 +20,7 @@ public class Program {
 
     private Playlist currPlaylist;
     private PlaylistManager PM;
+    private MusicPlayer player = new MusicPlayer();
 
     /**
      * Initializes program
@@ -61,6 +62,10 @@ public class Program {
         return location;
     }
 
+    public MusicPlayer getPlayer(){
+        return player;
+    }
+
     public void setLocation(int i) {
         this.location = i;
     }
@@ -99,6 +104,10 @@ public class Program {
 
     public void setCurrentPlaylist(Playlist playlist) {
         currPlaylist = playlist;
+    }
+
+    public Playlist getCurrPlaylist(){
+        return currPlaylist;
     }
 
     public void chooseSong(Integer num) {

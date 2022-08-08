@@ -27,12 +27,21 @@ public class Play extends Command{
     public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException {
         checkArguments(args);
         checkLocation(p);
-        // p.play();
+
+        Runnable task = () -> {
+            p.getPlayer().startPlayback(p.getCurrPlaylist());
+        };
+        Thread thread = new Thread(task);
+        thread.start();
     }
 
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocation(p);
-        // p.play();
+        Runnable task = () -> {
+            p.getPlayer().startPlayback(p.getCurrPlaylist());
+        };
+        Thread thread = new Thread(task);
+        thread.start();
     }
 }

@@ -86,7 +86,7 @@ public abstract class Playlist implements Serializable {
      * Get the list of songs in the playlist
      * @return list of songs
      */
-    public abstract List getMusics();
+    public abstract List<Song> getMusics();
 
     /**
      * Get the description of the playlist

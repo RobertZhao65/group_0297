@@ -31,5 +31,6 @@ public class Constants {
         COMMAND_MAP.put("repeat", new Repeat());
         COMMAND_MAP.put("favourite", new ViewFavourite());
         COMMAND_MAP.put("album", new ViewAlbum());
+        COMMAND_MAP.put("queue", new NowPlaying());
     }
 }

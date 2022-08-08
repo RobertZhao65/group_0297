@@ -69,7 +69,7 @@ public class Favourite extends Playlist {
     }
 
     @Override
-    public List getMusics() {
+    public List<Song> getMusics() {
         if (sharable) {
             return super.musics;
         }

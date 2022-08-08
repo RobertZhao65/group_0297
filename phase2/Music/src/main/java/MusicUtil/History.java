@@ -38,7 +38,7 @@ public class History extends Playlist {
     }
 
     @Override
-    public List getMusics() {
+    public List<Song> getMusics() {
         return super.musics;
     }
 }
