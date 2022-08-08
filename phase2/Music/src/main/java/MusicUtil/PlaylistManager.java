@@ -133,6 +133,19 @@ public class PlaylistManager {
         return null;
     }
 
+    public List getPlaylistByName(String name, String user) {
+        List<Playlist> result = new ArrayList<>();
+        List<Playlist> playlists1 = new ArrayList<>(playlists.values());
+        for (Playlist p : playlists1) {
+            if (name.equals(p.getName())) {
+                if (p.isSharable() || user.equals(p.getOwner())) {
+                    result.add(p);
+                }
+            }
+        }
+        return result;
+    }
+
     public void CreateFavorite(String owner, boolean sharable) {
         return;
     }

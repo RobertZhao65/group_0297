@@ -1,6 +1,5 @@
 package MusicUtil;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +23,12 @@ public abstract class Playlist implements Serializable {
      */
     private String about = "";
 
+    private String owner;
+
     /**
      * Constructs playlist with initialized name and about
      *
-     * @param name name of playlist
+     * @param name  name of playlist
      * @param about description of playlist
      */
     public Playlist(String name, String about) {
@@ -84,12 +85,14 @@ public abstract class Playlist implements Serializable {
 
     /**
      * Get the list of songs in the playlist
+     *
      * @return list of songs
      */
     public abstract List<Song> getMusics();
 
     /**
      * Get the description of the playlist
+     *
      * @return about
      */
     public String getAbout() {
@@ -98,22 +101,33 @@ public abstract class Playlist implements Serializable {
 
     /**
      * Get the name of the playlist
+     *
      * @return name
      */
     public String getName() {
         return name;
     }
 
+    public String getOwner() {
+        return owner;
+    }
+
     /**
      * Set the name of the playlist
+     *
      * @param name name of playlist to be provided
      */
     public void setName(String name) {
         this.name = name;
     }
 
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
     /**
      * Set the description of the playlist
+     *
      * @param about description of playlist to be provided
      */
     public void setAbout(String about) {
@@ -123,7 +137,6 @@ public abstract class Playlist implements Serializable {
     /**
      * Play songs from the playlist
      *
-     * @param player MP3 player
      */
     /*public void play(MP3Player player) {
         for(Song song : musics){
@@ -131,5 +144,8 @@ public abstract class Playlist implements Serializable {
         }
         player.play();
     }*/
-
+    @Override
+    public String toString() {
+        return name;
+    }
 }
