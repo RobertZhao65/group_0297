@@ -43,30 +43,46 @@ import java.util.*;
     }
 
      /**
-      * Add song to music library
+      * Add or Remove song to music library
       *
       * @param songIndex the index of song in the library
-      * @param libraryName name of library
+      * @param libraryName name of the library
+      * @param command 0 represents to remove the index of song in the library and
+      *                1 represents to add the index of song in the library
       */
-    public static void addSongToLibrary(Integer songIndex, String libraryName){
-        boolean isExist = checkIfSongExists(songIndex, libraryName);
-        if(!isExist) {
+    public static void editSongToLibrary(Integer songIndex, String libraryName, Integer command){
+        if (command==0 || checkIfSongExists(songIndex,libraryName)){
+            libraryMap.get(libraryName).remove(songMap.get(songIndex));
+        } else if (command==1 || !checkIfSongExists(songIndex, libraryName)){
             libraryMap.get(libraryName).add(songMap.get(songIndex));
         }
     }
 
-     /**
-      * Remove song from music library
-      *
-      * @param songIndex the index of song in the library
-      * @param libraryName name of library
-      */
-     public static void removeSongFromLibrary(Integer songIndex, String libraryName){
-         boolean isExist = checkIfSongExists(songIndex, libraryName);
-         if(isExist) {
-             libraryMap.get(libraryName).remove(songMap.get(songIndex));
-         }
-     }
+//     /**
+//      * Add song to music library
+//      *
+//      * @param songIndex the index of song in the library
+//      * @param libraryName name of library
+//      */
+//    public static void addSongToLibrary(Integer songIndex, String libraryName){
+//        boolean isExist = checkIfSongExists(songIndex, libraryName);
+//        if(!isExist) {
+//            libraryMap.get(libraryName).add(songMap.get(songIndex));
+//        }
+//    }
+//
+//     /**
+//      * Remove song from music library
+//      *
+//      * @param songIndex the index of song in the library
+//      * @param libraryName name of library
+//      */
+//     public static void removeSongFromLibrary(Integer songIndex, String libraryName){
+//         boolean isExist = checkIfSongExists(songIndex, libraryName);
+//         if(isExist) {
+//             libraryMap.get(libraryName).remove(songMap.get(songIndex));
+//         }
+//     }
 
      /**
       * Check whether song exists
@@ -139,13 +155,13 @@ import java.util.*;
         SongManager.addSong(song2);
          SongManager.addSong(song3);
          String libraryName = "library 1";
-         SongManager.addSongToLibrary(song1.getId(), libraryName);
-         SongManager.addSongToLibrary(song2.getId(), libraryName);
-         SongManager.addSongToLibrary(song3.getId(), libraryName);
+         SongManager.editSongToLibrary(song1.getId(), libraryName,1);
+         SongManager.editSongToLibrary(song2.getId(), libraryName,1);
+         SongManager.editSongToLibrary(song3.getId(), libraryName,1);
          for(Song song:SongManager.getSongsFromLibrary(libraryName)){
              System.out.println("Song name:"+ song.getName());
          }
-         SongManager.removeSongFromLibrary(song3.getId(), libraryName);
+         SongManager.editSongToLibrary(song3.getId(), libraryName,0);
          for(Song song:SongManager.getSongsFromLibrary(libraryName)){
              System.out.println("Song name:"+ song.getName());
          }
