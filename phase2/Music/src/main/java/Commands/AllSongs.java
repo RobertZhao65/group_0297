@@ -33,6 +33,7 @@ public class AllSongs extends Command{
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocation(p);
-        // p.skipForward();
+        p.allSongs();
+        //TODO: change this
     }
 }

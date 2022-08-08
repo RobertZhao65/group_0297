@@ -33,6 +33,6 @@ public class SkipForward extends Command{
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocation(p);
-        // p.skipForward();
+        p.getPlayer().skipForward();
     }
 }
