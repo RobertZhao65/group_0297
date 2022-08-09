@@ -20,27 +20,11 @@ public class Create extends Command{
     /**
      * Create new account with the given username and password, display login menu
      *
-     * @param AM account manager
      * @param p program
+     * @param UI the class responsible for displaying the user interface
      * @param args provided arguments and command
      * @throws CommandException if argument or location of command is incorrect
      */
-    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException{
-        checkArguments(args);
-        checkLocation(p);
-        String username = args.get(0);
-        String password = args.get(1);
-        TextUI UI = new TextUI(AM, p.getSongManager());
-        if(AM.createAccount(username, password)){
-            UI.accountCreateSuccess();
-            p.loginDisplay();
-        }
-        else{
-            UI.accountCreateFail();
-            p.loginDisplay();
-        }
-    }
-
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocation(p);

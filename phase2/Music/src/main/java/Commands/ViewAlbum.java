@@ -13,14 +13,14 @@ public class ViewAlbum extends Command {
         super(2, 1);
     }
 
-    @Override
-    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException {
-        checkArguments(args);
-        checkLocation(p);
-        List<Album> albums = p.getAlbum(args);
-        TextUI UI = new TextUI(AM, p.getSongManager());
-        UI.displayAlbums(albums);
-    }
+//    @Override
+//    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException {
+//        checkArguments(args);
+//        checkLocation(p);
+//        List<Album> albums = p.getAlbum(args);
+//        TextUI UI = new TextUI(AM, p.getSongManager());
+//        UI.displayAlbums(albums);
+//    }
 
     @Override
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException {
