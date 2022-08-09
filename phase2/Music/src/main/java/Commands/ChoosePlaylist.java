@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ChoosePlaylist extends Command {
     public ChoosePlaylist() {
-        super(1, 3);
+        super(1, 2);
 
     }
 

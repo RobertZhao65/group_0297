@@ -29,6 +29,16 @@ public class AlbumManager extends PlaylistManager {
         return true;
     }
 
+    public boolean CreateAlbumNoYear(String name, String artist, String genre, List<Song> musicid) {
+        for (Album a : super.albums) {
+            if (name.equals(a.getName()) && artist.equals(a.getArtist())) {
+                return false;
+            }
+        }
+        Album a = new Album(name, artist, genre, musicid);
+        albums.add(a);
+        return true;
+    }
     /**
      * Get an album by its name
      *

@@ -88,17 +88,18 @@ public class TextUI implements UIMethods {
     }
 
     @Override
-    public void displayAlbums(List<Album> albums) {
+    public boolean displayAlbums(List<Album> albums) {
         try {
             albums.isEmpty();
         } catch (NullPointerException e) {
             System.out.println("There's no matching result...");
-            return;
+            return false;
         }
 
         for (Album a : albums) {
             System.out.println(a.toString());
 
         }
+        return true;
     }
 }

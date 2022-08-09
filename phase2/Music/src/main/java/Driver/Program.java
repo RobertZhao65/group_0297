@@ -1,7 +1,6 @@
 package Driver;
 
 import MusicUtil.*;
-import javazoom.jl.player.Player;
 
 import java.util.List;
 
@@ -120,8 +119,9 @@ public class Program {
         if (num > songs.size() || num < 1) {
             System.out.println("Please insert the correct number");
         } else {
-            player.setCurrSong(songs.get(num-1));
-            System.out.println("You have selected " + songs.get(num-1).artistTitleAlbum());
+            player.setCurrSong(songs.get(num - 1));
+            location = 4;
+            System.out.println("You have selected " + songs.get(num - 1).artistTitleAlbum());
         }
     }
 
@@ -183,6 +183,7 @@ public class Program {
             System.out.println("Please insert the correct number");
         } else {
             currPlaylist = playlists.get(num - 1);
+            location = 3;
             System.out.println("You are now in " + currPlaylist);
         }
     }

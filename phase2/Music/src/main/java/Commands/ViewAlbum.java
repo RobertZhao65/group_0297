@@ -20,7 +20,9 @@ public class ViewAlbum extends Command {
         List<Album> albums = p.getAlbum(args);
         p.setPlaylistSet(albums);
         TextUI UI = new TextUI(AM, p.getSongManager());
-        UI.displayAlbums(albums);
+        if(UI.displayAlbums(albums)){
+            p.setLocation(2);
+        }
     }
 
     @Override
@@ -29,6 +31,8 @@ public class ViewAlbum extends Command {
         checkLocation(p);
         List<Album> albums = p.getAlbum(args);
         p.setPlaylistSet(albums);
-        UI.displayAlbums(albums);
+        if(UI.displayAlbums(albums)){
+            p.setLocation(2);
+        }
     }
 }

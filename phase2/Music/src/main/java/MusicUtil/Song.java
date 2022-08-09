@@ -96,6 +96,14 @@ public class Song {
         return id;
     }
 
+    public String getAlbumName() {
+        return albumName;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
     /**
      * Set the name of song
      *
