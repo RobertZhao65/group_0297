@@ -1,6 +1,11 @@
 package UI;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+
+import Driver.*;
 
 
 /**
@@ -12,7 +17,7 @@ public class LoginGUI extends JFrame{
     private final JLabel userLabel = new JLabel("Username");
     private final JLabel passwordLabel = new JLabel("Password");
     private final JTextField username = new JTextField(15);
-    private final JPasswordField password = new JPasswordField();
+    private final JPasswordField passwordT = new JPasswordField();
     private final JButton login = new JButton("Login");
 
     /**
@@ -35,8 +40,8 @@ public class LoginGUI extends JFrame{
         username.setBounds(150, 90, 150,25);
         panel.add(username);
 
-        password.setBounds(150, 120, 150, 25);
-        panel.add(password);
+        passwordT.setBounds(150, 120, 150, 25);
+        panel.add(passwordT);
 
         login.setBounds(140,170,70, 25);
         panel.add(login);
@@ -48,7 +53,30 @@ public class LoginGUI extends JFrame{
         frame.setVisible(true);
     }
 
-    
+    public void loginaction(){
+        login.addActionListener( e -> {
+            String user = username.getText();
+            String password = new String(passwordT.getPassword());
+                    AccountManager AM = null;
+                    try {
+                        AM = new AccountManager("phase2/music/src/accounts.txt");
+                    } catch (FileNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+
+                    assert AM != null;
+                    if(AM.authenticate(user, password)){
+                JOptionPane.showMessageDialog(null, "Login Success");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Invalid username or password");
+            }
+
+
+        }
+        );
+    }
+
 
 
 }
