@@ -20,20 +20,11 @@ public class Logout extends Command {
     /**
      * User logouts, returns to login menu
      *
-     * @param AM account manager
      * @param p program
+     * @param UI the class responsible for displaying the user interface
      * @param args provided arguments and command
      * @throws CommandException if invalid argument or command location
      */
-    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException{
-        checkArguments(args);
-        checkLocation(p);
-        TextUI UI = new TextUI(AM, p.getSongManager());
-        UI.logoutMsg();
-        // p.stop();
-        p.loginDisplay();
-    }
-
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocation(p);

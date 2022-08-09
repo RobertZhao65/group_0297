@@ -19,17 +19,11 @@ public class MainMenu extends Command{
     /**
      * Display the main menu of program
      *
-     * @param AM account manager
      * @param p program
+     * @param UI the class responsible for displaying the user interface
      * @param args provided arguments and command
      * @throws CommandException if invalid argument or command location (login menu)
      */
-    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException {
-        checkArguments(args);
-        checkLocationMainMenu(p);
-        p.mainMenu();
-    }
-
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocationMainMenu(p);

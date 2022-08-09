@@ -23,13 +23,11 @@ public abstract class Command {
     /**
      * Execute the given command line
      *
-     * @param AM account manager
      * @param p program
+     * @param UI the class responsible for displaying the user interface
      * @param args provided arguments and command
      * @throws CommandException if invalid argument
      */
-    abstract public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException;
-
     abstract public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException;
 
     /**

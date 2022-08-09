@@ -11,15 +11,6 @@ public class ChoosePlaylist extends Command {
         super(1, 2);
 
     }
-
-    @Override
-    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException {
-        checkArguments(args);
-        checkLocation(p);
-        Integer a = Integer.valueOf(args.get(0));
-        p.choosePlaylist(a);
-    }
-
     @Override
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException {
         checkArguments(args);

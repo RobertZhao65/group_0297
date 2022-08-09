@@ -19,27 +19,11 @@ public class Login extends Command {
     /**
      * User logins after successful authentication
      *
-     * @param AM account manager
      * @param p program
+     * @param UI the class responsible for displaying the user interface
      * @param args provided arguments and command
      * @throws CommandException if invalid argument or location of command
      */
-    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException{
-        checkArguments(args);
-        checkLocation(p);
-        String username = args.get(0);
-        String password = args.get(1);
-        TextUI UI = new TextUI(AM, p.getSongManager());
-        if(AM.authenticate(username, password)){
-            UI.loginSuccess();
-            p.mainMenu();
-        }
-        else{
-            UI.loginFail();
-            p.loginDisplay();
-        }
-    }
-
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocation(p);

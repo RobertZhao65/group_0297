@@ -19,17 +19,11 @@ public class AllSongs extends Command{
     /**
      * Display all songs stored in the song folder
      *
-     * @param AM account manager
      * @param p program
+     * @param UI the class responsible for displaying the user interface
      * @param args the provided command and argument
      * @throws CommandException if invalid argument or command location
      */
-    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException{
-        checkArguments(args);
-        checkLocation(p);
-        p.allSongs();
-    }
-
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocation(p);

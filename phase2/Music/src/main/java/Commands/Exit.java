@@ -20,19 +20,11 @@ public class Exit extends Command {
     /**
      * Program stops running
      *
-     * @param AM account manager
      * @param p program
+     * @param UI the class responsible for displaying the user interface
      * @param args provided arguments and command
      * @throws CommandException if invalid argument or command location
      */
-    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException {
-        checkArguments(args);
-        checkLocation(p);
-        p.stopRunning();
-        TextUI UI = new TextUI(AM, p.getSongManager());
-        UI.exitMsg();
-    }
-
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocation(p);

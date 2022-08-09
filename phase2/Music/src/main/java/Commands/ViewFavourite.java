@@ -15,16 +15,16 @@ public class ViewFavourite extends Command {
         super(0, 1);
     }
 
-    @Override
-    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException {
-        checkArguments(args);
-        checkLocation(p);
-        PlaylistManager PM = p.getPM();
-        Favourite f = PM.OwnerGetFavMusic(AM.getActiveUser());
-        TextUI UI = new TextUI(AM, p.getSongManager());
-        UI.displayPlaylist(f.getMusics());
-        p.setCurrentPlaylist(f);
-    }
+//    @Override
+//    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException {
+//        checkArguments(args);
+//        checkLocation(p);
+//        PlaylistManager PM = p.getPM();
+//        Favourite f = PM.OwnerGetFavMusic(AM.getActiveUser());
+//        TextUI UI = new TextUI(AM, p.getSongManager());
+//        UI.displayPlaylist(f.getMusics());
+//        p.setCurrentPlaylist(f);
+//    }
 
     @Override
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException {

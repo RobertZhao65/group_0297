@@ -12,19 +12,6 @@ public class ViewAlbum extends Command {
     public ViewAlbum() {
         super(2, 1);
     }
-
-    @Override
-    public void executeCommand(AccountManager AM, Program p, List<String> args) throws CommandException {
-        checkArguments(args);
-        checkLocation(p);
-        List<Album> albums = p.getAlbum(args);
-        p.setPlaylistSet(albums);
-        TextUI UI = new TextUI(AM, p.getSongManager());
-        if(UI.displayAlbums(albums)){
-            p.setLocation(2);
-        }
-    }
-
     @Override
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException {
         checkArguments(args);
