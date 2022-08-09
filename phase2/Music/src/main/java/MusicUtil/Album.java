@@ -28,6 +28,13 @@ public class Album extends Playlist {
         musics = songs;
     }
 
+    public Album(String name, String artist, String genre, List<Song> songs) {
+        super(name);
+        this.artist = artist;
+        this.genre = genre;
+        musics = songs;
+    }
+
     @Override
     public boolean add(List songs) {
         return false;

@@ -1,17 +1,20 @@
 package UI;
+
 import MusicUtil.Album;
 import MusicUtil.Song;
 
 import javax.swing.*;
 import java.util.List;
 
-public class GraphicUI implements UIMethods{
+public class GraphicUI implements UIMethods {
     private JFrame frame;
-    public void displayWindow(){
-        frame.setSize(1920,1080);
+
+    public void displayWindow() {
+        frame.setSize(1920, 1080);
         frame.setLayout(null);
         frame.setVisible(true);
     }
+
     public void displayLoginMenu() {
 
     }
@@ -92,6 +95,7 @@ public class GraphicUI implements UIMethods{
     }
 
     @Override
-    public void displayAlbums(List<Album> albums) {
+    public boolean displayAlbums(List<Album> albums) {
+        return true;
     }
 }

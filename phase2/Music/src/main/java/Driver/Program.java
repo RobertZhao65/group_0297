@@ -3,7 +3,6 @@ package Driver;
 import MusicUtil.*;
 
 import java.util.List;
-import MusicUtil.MusicPlayer;
 
 /**
  * Main program
@@ -19,6 +18,7 @@ public class Program {
     // private MP3Player player = new MP3Player();
 
     private Playlist currPlaylist;
+    private List<Playlist> playlists;
     private PlaylistManager PM;
     private MusicPlayer player = new MusicPlayer();
 
@@ -62,7 +62,7 @@ public class Program {
         return location;
     }
 
-    public MusicPlayer getPlayer(){
+    public MusicPlayer getPlayer() {
         return player;
     }
 
@@ -106,16 +106,22 @@ public class Program {
         currPlaylist = playlist;
     }
 
-    public Playlist getCurrPlaylist(){
+    public Playlist getCurrPlaylist() {
         return currPlaylist;
+    }
+
+    public void setPlaylistSet(List playlists) {
+        this.playlists = playlists;
     }
 
     public void chooseSong(Integer num) {
         List<Song> songs = currPlaylist.getMusics();
-        if(num>songs.size()|| num<1){
+        if (num > songs.size() || num < 1) {
             System.out.println("Please insert the correct number");
-        }else{
-            //TODO: finish the operation for set the music selected to current song
+        } else {
+            player.setCurrSong(songs.get(num - 1));
+            location = 4;
+            System.out.println("You have selected " + songs.get(num - 1).artistTitleAlbum());
         }
     }
 
@@ -140,7 +146,7 @@ public class Program {
 //        player.stop();
 //    }
 
-    public SongManager getSongManager(){
+    public SongManager getSongManager() {
         return this.SM;
     }
 
@@ -170,6 +176,16 @@ public class Program {
                 System.out.println("The type of keyword is incorrect...");
         }
         return null;
+    }
+
+    public void choosePlaylist(Integer num) {
+        if (num > playlists.size() || num < 1) {
+            System.out.println("Please insert the correct number");
+        } else {
+            currPlaylist = playlists.get(num - 1);
+            location = 3;
+            System.out.println("You are now in " + currPlaylist);
+        }
     }
 //    //TODO: rework this
 //

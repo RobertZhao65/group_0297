@@ -30,6 +30,8 @@ public class Constants {
         COMMAND_MAP.put("shuffle", new Shuffle());
         COMMAND_MAP.put("repeat", new Repeat());
         COMMAND_MAP.put("favourite", new ViewFavourite());
+        COMMAND_MAP.put("choosesong", new ChooseSong());
+        COMMAND_MAP.put("chooseplaylist", new ChoosePlaylist());
         COMMAND_MAP.put("album", new ViewAlbum());
         COMMAND_MAP.put("queue", new NowPlaying());
     }

@@ -64,5 +64,5 @@ public interface UIMethods {
 
     public void displayPlaylist(List<Song> f);
 
-    public void displayAlbums(List<Album> albums);
+    public boolean displayAlbums(List<Album> albums);
 }
