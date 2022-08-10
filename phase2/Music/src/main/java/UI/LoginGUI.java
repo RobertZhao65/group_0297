@@ -19,6 +19,7 @@ public class LoginGUI extends JFrame{
     private final JTextField username = new JTextField(15);
     private final JPasswordField passwordT = new JPasswordField();
     private final JButton login = new JButton("Login");
+    private final JCheckBox showpassword = new JCheckBox("show password");
 
     /**
      * Constructor, creates login window and initializes program
@@ -43,20 +44,46 @@ public class LoginGUI extends JFrame{
         passwordT.setBounds(150, 120, 150, 25);
         panel.add(passwordT);
 
-        login.setBounds(140,170,70, 25);
+        login.setBounds(140,190,70, 25);
         panel.add(login);
+        login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginaction();
+            }
+        });
+
+        showpassword.setBounds(220,150, 150, 20);
+        panel.add(showpassword);
+        showpassword.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ShowPasswordAction(e);
+            }
+        });
 
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new LoginGUI();
-        frame.setVisible(true);
+    /**
+     * User can hide or see their password
+     * @param e Action event
+     */
+    private void ShowPasswordAction(ActionEvent e){
+        if (showpassword.isSelected()){
+            passwordT.setEchoChar((char)0);
+        }
+        else{
+            passwordT.setEchoChar('\u25cf');
+        }
     }
 
+    /**
+     * User can login with correct credentials
+     */
     public void loginaction(){
         login.addActionListener( e -> {
-            String user = username.getText();
-            String password = new String(passwordT.getPassword());
+                    String user = username.getText();
+                    String password = new String(passwordT.getPassword());
                     AccountManager AM = null;
                     try {
                         AM = new AccountManager("phase2/music/src/accounts.txt");
@@ -66,15 +93,21 @@ public class LoginGUI extends JFrame{
 
                     assert AM != null;
                     if(AM.authenticate(user, password)){
-                JOptionPane.showMessageDialog(null, "Login Success");
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Invalid username or password");
-            }
+                        JOptionPane.showMessageDialog(null, "Login Success");
+
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Invalid username or password");
+                    }
 
 
-        }
+                }
         );
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new LoginGUI();
+        frame.setVisible(true);
     }
 
 
