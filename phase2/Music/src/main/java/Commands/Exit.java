@@ -28,6 +28,9 @@ public class Exit extends Command {
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
         checkLocation(p);
+        p.getPlayer().getPlayer().stop();
+        int end = p.getPlayer().getCurrQueue().size();
+        p.getPlayer().setCurrIndex(end);
         p.stopRunning();
         UI.exitMsg();
     }

@@ -35,6 +35,18 @@ public class MusicPlayer {
         currSong = song;
     }
 
+    public void setCurrIndex(int i){
+        currIndex = i;
+    }
+
+    public List<Song> getCurrQueue(){
+        return currQueue;
+    }
+
+    public MP3Player getPlayer(){
+        return player;
+    }
+
     public void skipForward() {
         if (currIndex == currQueue.size() - 1) {
             currIndex = -1;
