@@ -73,6 +73,7 @@ public class PlaylistManager {
      */
     public int CreatePlaylist(String name, String owner, boolean sharable) {
         CustomPlaylist c = new CustomPlaylist(name, owner);
+        c.setPlaylistID(playlistCounter);
         c.setSharable(sharable);
         playlists.put(playlistCounter, c);
         playlistCounter++;
@@ -128,16 +129,24 @@ public class PlaylistManager {
     }
 
     /**
-     * Set playlist to public
+     * Set playlist to sharable or not
      *
      * @param playlistID ID of the playlist
      * @param owner      owner of the playlist
+     * @param sharable decide playlist sharable or not
      */
-    public void setPlaylistPublic(int playlistID, String owner) {
+    public boolean setPlaylistSharable(int playlistID, String owner, boolean sharable) {
+        try{playlists.get(playlistID);}
+            catch(Exception e){
+            return false;
+            }
         CustomPlaylist c = playlists.get(playlistID);
-        c.setSharable(true);
+        if(c.Owner.equals(owner)){
+        c.setSharable(sharable);
         playlists.replace(playlistID, c);
-
+        return true;
+        }
+        return false;
     }
 
     /**
@@ -318,15 +327,15 @@ public class PlaylistManager {
     }
 
     /**
-     * Set the favourite playlist to public
+     * Set the favourite playlist harable or not
      *
      * @param owner owner of the playlist
+     * @param sharable owner's choice on favourite sharable or not
      */
-    public void setFavouritePublic(String owner) {
+    public void setFavouriteSharale(String owner, boolean sharable) {
         Favourite f = favourites.get(owner);
-        f.setSharable(true);
+        f.setSharable(sharable);
         favourites.replace(owner, f);
-
     }
 
     /**

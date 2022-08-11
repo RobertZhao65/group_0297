@@ -133,6 +133,9 @@ public class Program {
     public void createFavourite(String user) {
         PM.CreateFavorite(user, false);
     }
+    public void createPlaylist(String name){
+        PM.CreatePlaylist(name, AM.getActiveUser(),false);
+    }
 
     public AccountManager getAccountManager() {
         return this.AM;
@@ -154,6 +157,10 @@ public class Program {
         return null;
     }
 
+    public List<Playlist> getPlaylists(List<String> args){
+        return null;//TODO
+    }
+
     public void choosePlaylist(Integer num) {
         if (num > playlists.size() || num < 1) {
             System.out.println("Please insert the correct number");
@@ -162,5 +169,17 @@ public class Program {
             location = 3;
             System.out.println("You are now in " + currPlaylist);
         }
+    }
+    public boolean setSharable(boolean sharable){
+        if (currPlaylist instanceof Favourite){
+            if (currPlaylist.getOwner().equals(AM.getActiveUser())){
+                PM.setFavouriteSharale(AM.getActiveUser(), sharable);
+                return true;
+            }
+        } else if (currPlaylist instanceof Playlist) {
+            Integer id=currPlaylist.getPlaylistID();
+            return PM.setPlaylistSharable(id, AM.getActiveUser(), sharable);
+        }
+        return true;
     }
 }
