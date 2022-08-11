@@ -24,6 +24,7 @@ public abstract class Playlist implements Serializable {
     private String about = "";
 
     private String owner;
+    private int playlistID;
 
     /**
      * Constructs playlist with initialized name and about
@@ -59,7 +60,7 @@ public abstract class Playlist implements Serializable {
      * @param songs list of songs to be added
      * @return true if song has been added to playlist
      */
-    public abstract boolean add(List<Song> songs);//TODO: return specific reason for unable to add(String)
+    public abstract boolean add(List<Song> songs);
 
     /**
      * Remove songs from the playlist
@@ -67,14 +68,14 @@ public abstract class Playlist implements Serializable {
      * @param song song to be removed
      * @return true if song has been removed from playlist
      */
-    public abstract boolean remove(Song song);//TODO: return specific reason for unable to remove(String)
+    public abstract boolean remove(Song song);
 
     /**
      * Empty the playlist
      *
      * @return true if playlist has been emptied
      */
-    public abstract boolean empty();//TODO: return specific reason for unable to empty(String)
+    public abstract boolean empty();
 
     /**
      * Whether the playlist is sharable
@@ -147,5 +148,13 @@ public abstract class Playlist implements Serializable {
     @Override
     public String toString() {
         return name;
+    }
+
+    public void setPlaylistID(int playlistID) {
+        this.playlistID = playlistID;
+    }
+
+    public int getPlaylistID() {
+        return playlistID;
     }
 }

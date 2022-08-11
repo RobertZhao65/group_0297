@@ -65,4 +65,5 @@ public interface UIMethods {
     public void displayPlaylist(List<Song> f);
 
     public boolean displayAlbums(List<Album> albums);
+public void share(boolean result);
 }

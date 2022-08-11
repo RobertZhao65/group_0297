@@ -78,9 +78,11 @@ public class TextUI implements UIMethods {
             System.out.println("This playlist does not exists...");
             return;
         }
+        int i=1;
         if (!playlist.isEmpty()) {
             for (Song s : playlist) {
-                System.out.println(s.getId() + ". " + s.artistTitleAlbum());
+                System.out.println(i+". "+s.getId() + ". " + s.artistTitleAlbum());
+                i++;
             }
         } else {
             System.out.println("This playlist is empty...");
@@ -95,11 +97,20 @@ public class TextUI implements UIMethods {
             System.out.println("There's no matching result...");
             return false;
         }
-
+        int i=1;
         for (Album a : albums) {
-            System.out.println(a.toString());
-
+            System.out.println(i+". "+a.toString());
+            i++;
         }
         return true;
+    }
+
+    @Override
+    public void share(boolean result) {
+        if(result==true){
+            System.out.println("The sharable status has changed");
+        }else {
+            System.out.println("The sharable status can not be changed, you can only change the playlists that you own");
+        }
     }
 }

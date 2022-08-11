@@ -1,0 +1,17 @@
+package Commands;
+
+import Driver.Program;
+import UI.UIMethods;
+
+import java.util.List;
+
+public class AddSong extends Command{
+    public AddSong(int expectedArguments, int expectedLocation) {
+        super(1, 3);
+    }
+
+    @Override
+    public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException {
+//TODO
+    }
+}

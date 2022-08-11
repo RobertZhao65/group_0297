@@ -35,5 +35,6 @@ public class ViewFavourite extends Command {
         Favourite f = PM.OwnerGetFavMusic(AM.getActiveUser());
         UI.displayPlaylist(f.getMusics());
         p.setCurrentPlaylist(f);
+        p.setLocation(3);
     }
 }
