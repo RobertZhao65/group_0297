@@ -12,11 +12,7 @@ public class Program {
     private boolean running;
     private AccountManager AM;
     private int location;
-
     private SongManager SM;
-
-    // private MP3Player player = new MP3Player();
-
     private Playlist currPlaylist;
     private List<Playlist> playlists;
     private PlaylistManager PM;
@@ -93,7 +89,8 @@ public class Program {
         location = 2;
         if (!SM.getAllSongs().isEmpty()) {
             for (Song song : SM.getAllSongs()) {
-                System.out.println(song.getId() + ". " + song.artistTitleAlbum());
+                int num = song.getId() + 1;
+                System.out.println(num + ". " + song.artistTitleAlbum());
             }
         } else {
             System.out.println("there are no songs here...");
@@ -124,27 +121,6 @@ public class Program {
             System.out.println("You have selected " + songs.get(num - 1).artistTitleAlbum());
         }
     }
-
-//    /**
-//     * Allows MP3 player to play song
-//     */
-//    public void play(){
-//        currPlaylist.play(player);
-//    }
-//
-//    /**
-//     * Allows MP3 player to pause song
-//     */
-//    public void pause(){
-//        player.pause();
-//    }
-//
-//    /**
-//     * Allows MP3 player to stop song
-//     */
-//    public void stop(){
-//        player.stop();
-//    }
 
     public SongManager getSongManager() {
         return this.SM;
@@ -187,49 +163,4 @@ public class Program {
             System.out.println("You are now in " + currPlaylist);
         }
     }
-//    //TODO: rework this
-//
-//    /**
-//     * Toggles the music player's repeat status between on and off
-//     */
-//    public void repeat(){
-//        if(player.isRepeat()){
-//            System.out.println("music is no longer repeating");
-//            player.setRepeat(false);
-//        }
-//        else{
-//            System.out.println("music is now repeating");
-//            player.setRepeat(true);
-//        }
-//    }
-//
-//    //TODO: rework this
-//
-//    /**
-//     * Toggles the music player's shuffle status between on and off
-//     */
-//    public void shuffle(){
-//        if(player.isShuffle()){
-//            System.out.println("music is no longer being shuffled");
-//            player.setShuffle(false);
-//        }
-//        else{
-//            System.out.println("music is now being shuffled");
-//            player.setShuffle(true);
-//        }
-//    }
-//
-//    /**
-//     * Skips to the next song in the current playlist
-//     */
-//    public void skipForward(){
-//        player.skipForward();
-//    }
-//
-//    /**
-//     * Returns to the previous song in the current playlist
-//     */
-//    public void skipBackwards(){
-//        player.skipBackward();
-//    }
 }
