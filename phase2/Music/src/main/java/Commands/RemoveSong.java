@@ -12,6 +12,10 @@ public class RemoveSong extends Command{
 
     @Override
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException {
-//TODO
+        checkArguments(args);
+        checkLocation(p);
+        Integer num=Integer.valueOf(args.get(0));
+        boolean result=p.removeSong(num);
+        UI.removeSong(result);
     }
 }

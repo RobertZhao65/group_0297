@@ -122,6 +122,33 @@ public class Program {
         }
     }
 
+    public boolean addSong(Integer ID) {
+        Song s = SM.getSong(ID);
+        if (currPlaylist instanceof Favourite) {
+            return PM.addSongToPlaylist(currPlaylist.getPlaylistID(), AM.getActiveUser(), s);
+        } else if (currPlaylist instanceof Playlist) {
+            return PM.addFavMusic(AM.getActiveUser(), s);
+        }
+        return false;
+    }
+
+    public boolean removeSong(Integer arg) {
+        List<Song> songs = currPlaylist.getMusics();
+        if (arg > songs.size() || arg < 1) {
+            System.out.println("Please insert the correct number");
+            return false;
+        }
+        if (currPlaylist instanceof Favourite) {
+            Song s = currPlaylist.getMusics().get(arg);
+            return PM.removeMusicInPlaylist(currPlaylist.getPlaylistID(), AM.getActiveUser(), s);
+        } else if (currPlaylist instanceof Playlist) {
+            Song s = currPlaylist.getMusics().get(arg);
+            return PM.removeFavMusic(AM.getActiveUser(), s);
+        }
+        return false;
+    }
+
+
     public SongManager getSongManager() {
         return this.SM;
     }
@@ -133,8 +160,9 @@ public class Program {
     public void createFavourite(String user) {
         PM.CreateFavorite(user, false);
     }
-    public void createPlaylist(String name){
-        PM.CreatePlaylist(name, AM.getActiveUser(),false);
+
+    public void createPlaylist(String name) {
+        PM.CreatePlaylist(name, AM.getActiveUser(), false);
     }
 
     public AccountManager getAccountManager() {
@@ -157,8 +185,24 @@ public class Program {
         return null;
     }
 
-    public List<Playlist> getPlaylists(List<String> args){
-        return null;//TODO
+    public List<Playlist> getPlaylists(String type, String arg) {
+        switch (type) {
+            case "name":
+                return PM.getPlaylistByName(arg, AM.getActiveUser());
+            case "id":
+                return PM.getPlaylist(Integer.valueOf(arg), AM.getActiveUser());
+        }
+        return null;
+    }
+
+    public boolean removePlaylist() {
+        if (currPlaylist instanceof CustomPlaylist) {
+            if (currPlaylist.getOwner().equals(AM.getActiveUser()) || AM.isPermitted()) {
+                PM.removePlaylist(currPlaylist.getPlaylistID());
+                return true;
+            }
+        }
+        return false;
     }
 
     public void choosePlaylist(Integer num) {
@@ -170,14 +214,15 @@ public class Program {
             System.out.println("You are now in " + currPlaylist);
         }
     }
-    public boolean setSharable(boolean sharable){
-        if (currPlaylist instanceof Favourite){
-            if (currPlaylist.getOwner().equals(AM.getActiveUser())){
+
+    public boolean setSharable(boolean sharable) {
+        if (currPlaylist instanceof Favourite) {
+            if (currPlaylist.getOwner().equals(AM.getActiveUser())) {
                 PM.setFavouriteSharale(AM.getActiveUser(), sharable);
                 return true;
             }
         } else if (currPlaylist instanceof Playlist) {
-            Integer id=currPlaylist.getPlaylistID();
+            Integer id = currPlaylist.getPlaylistID();
             return PM.setPlaylistSharable(id, AM.getActiveUser(), sharable);
         }
         return true;

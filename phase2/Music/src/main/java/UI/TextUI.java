@@ -2,6 +2,7 @@ package UI;
 
 import Driver.AccountManager;
 import MusicUtil.Album;
+import MusicUtil.Playlist;
 import MusicUtil.Song;
 import MusicUtil.SongManager;
 
@@ -111,6 +112,47 @@ public class TextUI implements UIMethods {
             System.out.println("The sharable status has changed");
         }else {
             System.out.println("The sharable status can not be changed, you can only change the playlists that you own");
+        }
+    }
+
+    @Override
+    public void viewPlaylist(List<Playlist> playlists) {
+        try{
+            playlists.isEmpty();
+        }catch (NullPointerException e){
+            System.out.println("There's no matched playlist or you don't have access to it");
+        }
+        int i=1;
+        for(Playlist p: playlists){
+            System.out.println(i+". " +p.toString());
+            i++;
+        }
+    }
+
+    @Override
+    public void removePlaylist(boolean result) {
+        if(result == true){
+            System.out.println("The playlist has been removed");
+        }else {
+            System.out.println("This playlist cannot be removed");
+        }
+    }
+
+    @Override
+    public void removeSong(boolean result) {
+        if(result == true){
+            System.out.println("The song has been removed");
+        }else {
+            System.out.println("This song cannot be removed");
+        }
+    }
+
+    @Override
+    public void addSong(boolean result) {
+        if(result == true){
+            System.out.println("The song has been added");
+        }else {
+            System.out.println("This song cannot be added");
         }
     }
 }
