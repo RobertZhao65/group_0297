@@ -6,8 +6,8 @@ import UI.UIMethods;
 import java.util.List;
 
 public class RemoveSong extends Command{
-    public RemoveSong(int expectedArguments, int expectedLocation) {
-        super(expectedArguments, expectedLocation);
+    public RemoveSong() {
+        super(1, 3);
     }
 
     @Override

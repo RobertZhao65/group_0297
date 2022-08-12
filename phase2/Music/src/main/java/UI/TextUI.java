@@ -95,7 +95,7 @@ public class TextUI implements UIMethods {
     }
 
     @Override
-    public boolean displayAlbums(List<Album> albums) {
+    public boolean displayAlbums(List<Playlist> albums) {
         try {
             albums.isEmpty();
         } catch (NullPointerException e) {
@@ -103,7 +103,7 @@ public class TextUI implements UIMethods {
             return false;
         }
         int i=1;
-        for (Album a : albums) {
+        for (Playlist a : albums) {
             System.out.println(i+". "+a.toString());
             i++;
         }

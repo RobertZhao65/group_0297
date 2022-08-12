@@ -85,10 +85,10 @@ public class PlaylistManager {
      * @param user      The user who requested the operation
      * @return the list songs from the playlist
      */
-    public List getPlaylist(int playlistID, String user) {
-        Favourite c = favourites.get(playlistID);
-        if (c.owner.equals(user)||c.isSharable()||c.getRecipients().contains(user)) {
-            return c.getMusics();
+    public CustomPlaylist getPlaylist(int playlistID, String user) {
+        CustomPlaylist c = playlists.get(playlistID);
+        if (c.Owner.equals(user)||c.isSharable()||c.getRecipients().contains(user)) {
+            return c;
         } else return null;
     }
 

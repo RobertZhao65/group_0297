@@ -8,7 +8,7 @@ import UI.UIMethods;
 import java.util.List;
 
 public class CreatePlaylist extends Command{
-    public CreatePlaylist(int expectedArguments, int expectedLocation) {
+    public CreatePlaylist() {
         super(1, 1);
     }
 

@@ -6,7 +6,7 @@ import UI.UIMethods;
 import java.util.List;
 
 public class AddSong extends Command{
-    public AddSong(int expectedArguments, int expectedLocation) {
+    public AddSong() {
         super(1, 3);
     }
 

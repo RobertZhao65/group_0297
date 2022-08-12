@@ -2,6 +2,7 @@ package Driver;
 
 import MusicUtil.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -124,9 +125,10 @@ public class Program {
 
     public boolean addSong(Integer ID) {
         Song s = SM.getSong(ID);
-        if (currPlaylist instanceof Favourite) {
+        if (currPlaylist instanceof CustomPlaylist) {
             return PM.addSongToPlaylist(currPlaylist.getPlaylistID(), AM.getActiveUser(), s);
-        } else if (currPlaylist instanceof Playlist) {
+        }
+        if (currPlaylist instanceof Favourite) {
             return PM.addFavMusic(AM.getActiveUser(), s);
         }
         return false;
@@ -138,10 +140,12 @@ public class Program {
             System.out.println("Please insert the correct number");
             return false;
         }
-        if (currPlaylist instanceof Favourite) {
+        arg = arg - 1;
+        if (currPlaylist instanceof Playlist) {
             Song s = currPlaylist.getMusics().get(arg);
             return PM.removeMusicInPlaylist(currPlaylist.getPlaylistID(), AM.getActiveUser(), s);
-        } else if (currPlaylist instanceof Playlist) {
+        }
+        if (currPlaylist instanceof Favourite) {
             Song s = currPlaylist.getMusics().get(arg);
             return PM.removeFavMusic(AM.getActiveUser(), s);
         }
@@ -169,16 +173,19 @@ public class Program {
         return this.AM;
     }
 
-    public List<Album> getAlbum(List<String> args) {
+    public List<Playlist> getAlbum(List<String> args) {
         String type = args.get(0);
         String keyword = args.get(1);
         switch (type) {
             case "name":
-                return PM.getAlbumByName(keyword);
+                playlists = PM.getAlbumByName(keyword);
+                return playlists;
             case "genre":
-                return PM.getAlbumByGenre(keyword);
+                playlists = PM.getAlbumByGenre(keyword);
+                return playlists;
             case "artist":
-                return PM.getAlbumByArtist(keyword);
+                playlists = PM.getAlbumByArtist(keyword);
+                return playlists;
             default:
                 System.out.println("The type of keyword is incorrect...");
         }
@@ -188,9 +195,11 @@ public class Program {
     public List<Playlist> getPlaylists(String type, String arg) {
         switch (type) {
             case "name":
-                return PM.getPlaylistByName(arg, AM.getActiveUser());
+                playlists = PM.getPlaylistByName(arg, AM.getActiveUser());
+                return playlists;
             case "id":
-                return PM.getPlaylist(Integer.valueOf(arg), AM.getActiveUser());
+                playlists = Arrays.asList(PM.getPlaylist(Integer.valueOf(arg), AM.getActiveUser()));
+                return playlists;
         }
         return null;
     }

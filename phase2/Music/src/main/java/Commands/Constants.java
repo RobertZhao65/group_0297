@@ -32,6 +32,10 @@ public class Constants {
         COMMAND_MAP.put("favourite", new ViewFavourite());
         COMMAND_MAP.put("choosesong", new ChooseSong());
         COMMAND_MAP.put("chooseplaylist", new ChoosePlaylist());
+        COMMAND_MAP.put("removesong", new RemoveSong());
+        COMMAND_MAP.put("createplaylist", new CreatePlaylist());
+        COMMAND_MAP.put("addsong", new AddSong());
+        COMMAND_MAP.put("playlist", new ViewPlaylist());
         COMMAND_MAP.put("album", new ViewAlbum());
         COMMAND_MAP.put("queue", new NowPlaying());
     }

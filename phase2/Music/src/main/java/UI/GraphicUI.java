@@ -1,5 +1,4 @@
 package UI;
-import MusicUtil.Album;
 import MusicUtil.Playlist;
 import MusicUtil.Song;
 
@@ -132,7 +131,7 @@ public class GraphicUI implements UIMethods{
     }
 
     @Override
-    public boolean displayAlbums(List<Album> albums) {
+    public boolean displayAlbums(List<Playlist> albums) {
         return false;
     }
 

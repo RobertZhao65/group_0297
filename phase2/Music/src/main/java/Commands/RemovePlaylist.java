@@ -6,7 +6,7 @@ import UI.UIMethods;
 import java.util.List;
 
 public class RemovePlaylist extends Command{
-    public RemovePlaylist(int expectedArguments, int expectedLocation) {
+    public RemovePlaylist() {
         super(0, 3);
     }
 
