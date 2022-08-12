@@ -12,6 +12,10 @@ public class AddSong extends Command{
 
     @Override
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException {
-//TODO
+        checkArguments(args);
+        checkLocation(p);
+        Integer ID = Integer.valueOf(args.get(0));
+        boolean result=p.addSong(ID);
+        UI.addSong(result);
     }
 }

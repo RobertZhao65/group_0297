@@ -7,11 +7,14 @@ import java.util.List;
 
 public class RemovePlaylist extends Command{
     public RemovePlaylist(int expectedArguments, int expectedLocation) {
-        super(expectedArguments, expectedLocation);
+        super(0, 3);
     }
 
     @Override
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException {
-//TODO
+        checkArguments(args);
+        checkLocation(p);
+        boolean result=p.removePlaylist();
+        UI.removePlaylist(result);
     }
 }

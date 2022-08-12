@@ -57,7 +57,9 @@ import java.util.*;
             libraryMap.get(libraryName).add(songMap.get(songIndex));
         }
     }
-
+    public Song getSong(Integer ID){
+        return songMap.get(ID);
+    }
 //     /**
 //      * Add song to music library
 //      *
