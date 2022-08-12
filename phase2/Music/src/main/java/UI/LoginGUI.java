@@ -86,7 +86,7 @@ public class LoginGUI extends JFrame{
                     String password = new String(passwordT.getPassword());
                     AccountManager AM = null;
                     try {
-                        AM = new AccountManager("phase2/music/src/accounts.txt");
+                        AM = new AccountManager("src/accounts.txt");
                     } catch (FileNotFoundException ex) {
                         ex.printStackTrace();
                     }
@@ -94,6 +94,7 @@ public class LoginGUI extends JFrame{
                     assert AM != null;
                     if(AM.authenticate(user, password)){
                         JOptionPane.showMessageDialog(null, "Login Success");
+                        new MainGUI();
 
                     }
                     else{
