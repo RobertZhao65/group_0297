@@ -6,6 +6,7 @@ import MusicUtil.Song;
 import javax.swing.*;
 import java.util.List;
 
+
 public class GraphicUI implements UIMethods{
     private static JLabel userLabel;
     private static JTextField username;

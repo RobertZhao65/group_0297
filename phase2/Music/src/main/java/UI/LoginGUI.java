@@ -6,10 +6,6 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 import Driver.*;
-import MusicUtil.PlaylistManager;
-import MusicUtil.SongManager;
-import UI.*;
-import Commands.*;
 
 
 /**
@@ -102,8 +98,10 @@ public class LoginGUI extends JFrame{
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "Invalid username or password");
-                    }
+                        username.setText("");
+                        passwordT.setText("");
 
+                    }
 
                 }
         );

@@ -8,6 +8,10 @@ import MusicUtil.SongManager;
 
 import java.util.List;
 
+/**
+ * Text-based UI
+ */
+
 public class TextUI implements UIMethods {
     private AccountManager AM;
     private SongManager SM;
