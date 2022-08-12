@@ -13,6 +13,8 @@ import Driver.*;
  */
 
 public class LoginGUI extends JFrame{
+
+    AccountManager AM;
     private final JPanel panel = new JPanel();
     private final JLabel userLabel = new JLabel("Username");
     private final JLabel passwordLabel = new JLabel("Password");
@@ -30,7 +32,6 @@ public class LoginGUI extends JFrame{
         setSize(400, 350);
         panel.setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
         userLabel.setBounds(45, 90, 70, 25);
         panel.add(userLabel);
@@ -62,6 +63,12 @@ public class LoginGUI extends JFrame{
             }
         });
 
+        AM = null;
+        try {
+            AM = new AccountManager("phase2/music/src/accounts.txt");
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -84,18 +91,13 @@ public class LoginGUI extends JFrame{
         login.addActionListener( e -> {
                     String user = username.getText();
                     String password = new String(passwordT.getPassword());
-                    AccountManager AM = null;
-                    try {
-                        AM = new AccountManager("src/accounts.txt");
-                    } catch (FileNotFoundException ex) {
-                        ex.printStackTrace();
-                    }
 
-                    assert AM != null;
                     if(AM.authenticate(user, password)){
                         JOptionPane.showMessageDialog(null, "Login Success");
-                        new MainGUI();
-
+                        this.show(false);
+                        new MainGUI(AM);
+                        // this.show(true)
+                        // this.;
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "Invalid username or password");
