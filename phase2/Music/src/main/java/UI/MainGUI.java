@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 
 import Commands.CommandController;
 import Driver.Program;
+import MusicUtil.Favourite;
 import MusicUtil.PlaylistManager;
 import MusicUtil.Song;
 import MusicUtil.SongManager;
@@ -21,12 +22,17 @@ public class MainGUI extends JFrame{
     JPanel playlist;
 
     JButton control;
+
     JButton skipB;
     JButton skipF;
     JButton chooseSong;
+    JLabel favouriteLabel;
     JRadioButton favourite;
+    JLabel normalLabel;
     JRadioButton normButton;
+    JLabel shuffleLabel;
     JRadioButton shuffleButton;
+    JLabel repeatLabel;
     JRadioButton repeatButton;
 
     AccountManager AM;
@@ -42,8 +48,9 @@ public class MainGUI extends JFrame{
         playlist = new JPanel();
         playlist.setBounds(0,0,300,200);
 
+
         control = new JButton();
-        control.setBounds(125, 400, 50, 50);
+        control.setBounds(110, 400, 80, 50);
         control.setText("Play");
         control.addActionListener(new ActionListener() {
             @Override
@@ -79,8 +86,9 @@ public class MainGUI extends JFrame{
         });
         playlist.add(chooseSong);
 
-        skipB = new JButton();
-        skipB.setBounds(105, 415,20,20);
+        skipB = new JButton("last");
+        skipB.setBounds(55, 415,55,20);
+        skipB.setFont(new Font("Calibri",Font.PLAIN, 10));
         skipB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -88,8 +96,9 @@ public class MainGUI extends JFrame{
             }
         });
 
-        skipF = new JButton();
-        skipF.setBounds(175,415,20,20);
+        skipF = new JButton("next");
+        skipF.setBounds(190,415,55,20);
+        skipF.setFont(new Font("Calibri",Font.PLAIN, 10));
         skipF.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -97,6 +106,12 @@ public class MainGUI extends JFrame{
             }
         });
 
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(new FlowLayout());
+
+        favouriteLabel = new JLabel("favourite");
+        favouriteLabel.setBounds(25, 285, 40, 20);
+        favouriteLabel.setFont(new Font("Calibri",Font.PLAIN, 10));
         favourite = new JRadioButton();
         favourite.setBounds(30,300,17,17);
         favourite.addActionListener(new ActionListener() {
@@ -106,9 +121,9 @@ public class MainGUI extends JFrame{
             }
         });
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(new FlowLayout());
-
+        normalLabel = new JLabel("Normal");
+        normalLabel.setBounds(245, 285, 40, 20);
+        normalLabel.setFont(new Font("Calibri",Font.PLAIN, 10));
         normButton = new JRadioButton("shuffle");
         normButton.setBounds(250,300,17,17);
         normButton.addActionListener(new ActionListener() {
@@ -118,9 +133,11 @@ public class MainGUI extends JFrame{
             }
         });
 
+        shuffleLabel = new JLabel("Shuffle");
+        shuffleLabel.setBounds(245, 335, 40, 20);
+        shuffleLabel.setFont(new Font("Calibri",Font.PLAIN, 10));
         shuffleButton = new JRadioButton("shuffle");
         shuffleButton.setBounds(250,350,17,17);
-
         shuffleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -128,6 +145,9 @@ public class MainGUI extends JFrame{
             }
         });
 
+        repeatLabel = new JLabel("Repeat");
+        repeatLabel.setBounds(245, 385, 40, 20);
+        repeatLabel.setFont(new Font("Calibri",Font.PLAIN, 10));
         repeatButton = new JRadioButton("repeat");
         repeatButton.setBounds(250, 400, 17, 17);
         repeatButton.addActionListener(new ActionListener() {
@@ -145,13 +165,19 @@ public class MainGUI extends JFrame{
 
         this.add(playlist);
 
+        this.add(normalLabel);
         this.add(normButton);
+        this.add(shuffleLabel);
         this.add(shuffleButton);
+        this.add(repeatLabel);
         this.add(repeatButton);
+
         this.add(control);
         this.add(skipB);
         this.add(skipF);
+
         this.add(favourite);
+        this.add(favouriteLabel);
 
         this.setLayout(null);
 
@@ -177,6 +203,10 @@ public class MainGUI extends JFrame{
 
     }
 
+    /**
+     * User can choose to shuffle or repeat the playlist
+     * @param e Action Event
+     */
     private void PlayOrder(ActionEvent e){
         if(e.getSource()==shuffleButton){
             CC.executeCommand(textUI, p, "shuffle");
@@ -200,7 +230,6 @@ public class MainGUI extends JFrame{
         } else{
             return  null;
         }
-
     }
 
     public static void main(String[] args){
