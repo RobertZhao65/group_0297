@@ -82,7 +82,7 @@ public class LoginGUI extends JFrame{
 
         AM = null;
         try {
-            AM = new AccountManager("phase2/music/src/accounts.txt");
+            AM = new AccountManager("src/accounts.txt");
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }

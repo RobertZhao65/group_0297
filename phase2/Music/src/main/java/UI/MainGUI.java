@@ -11,15 +11,12 @@ import java.io.FileNotFoundException;
 
 import Commands.CommandController;
 import Driver.Program;
-import MusicUtil.Favourite;
 import MusicUtil.PlaylistManager;
 import MusicUtil.Song;
 import MusicUtil.SongManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainGUI extends JFrame{
-
-    JPanel playlist;
 
     JButton control;
 
@@ -45,10 +42,6 @@ public class MainGUI extends JFrame{
 
     MainGUI(AccountManager am){
 
-        playlist = new JPanel();
-        playlist.setBounds(0,0,300,200);
-
-
         control = new JButton();
         control.setBounds(110, 400, 80, 50);
         control.setText("Play");
@@ -67,7 +60,8 @@ public class MainGUI extends JFrame{
             }
         });
 
-        chooseSong = new JButton();
+        chooseSong = new JButton("Choose File");
+        chooseSong.setBounds(90,100,110,50);
         chooseSong.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,7 +78,6 @@ public class MainGUI extends JFrame{
                 }
             }
         });
-        playlist.add(chooseSong);
 
         skipB = new JButton("last");
         skipB.setBounds(55, 415,55,20);
@@ -163,7 +156,7 @@ public class MainGUI extends JFrame{
         orderGroup.add(shuffleButton);
         orderGroup.add(repeatButton);
 
-        this.add(playlist);
+        this.add(chooseSong);
 
         this.add(normalLabel);
         this.add(normButton);
@@ -216,6 +209,11 @@ public class MainGUI extends JFrame{
             //TODO: normal command
         }
     }
+
+    /**
+     * Choose the music file
+     * @return file
+     */
     private File[] showFileOpenDialog() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File("."));
@@ -234,7 +232,7 @@ public class MainGUI extends JFrame{
 
     public static void main(String[] args){
         try {
-            AccountManager am = new AccountManager("phase2/music/src/accounts.txt");
+            AccountManager am = new AccountManager("src/accounts.txt");
             MainGUI frame = new MainGUI(am);
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
