@@ -26,7 +26,6 @@ public class Play extends Command{
      */
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException{
         checkArguments(args);
-        checkLocation(p);
         Runnable task = () -> {
             p.getPlayer().startPlayback(p.getCurrPlaylist());
         };

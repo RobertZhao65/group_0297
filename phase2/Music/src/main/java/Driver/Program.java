@@ -205,8 +205,9 @@ public class Program {
     }
 
     public boolean removePlaylist() {
+        String user = AM.getActiveUser();
         if (currPlaylist instanceof CustomPlaylist) {
-            if (currPlaylist.getOwner().equals(AM.getActiveUser()) || AM.isPermitted()) {
+            if (currPlaylist.getOwner().equals(user)) {
                 PM.removePlaylist(currPlaylist.getPlaylistID());
                 return true;
             }

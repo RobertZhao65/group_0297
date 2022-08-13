@@ -1,7 +1,7 @@
 --First time setup--
 create a folder named "songs" and put any mp3 files you'd like to listen to in that folder.
 the songs folder may only contain mp3 files themselves, and not folders containing mp3 files.
-
+The program should run from phase2
 --Login menu commands--
 login <username> <password>
     login to the account with the given username and password
@@ -43,6 +43,34 @@ shuffle
 
 repeat
     toggle repeat on/off
+
+--Playlist related commands--
+favourite
+    view user's favourite
+
+album *type* *arg*
+    search matched albums, can choose between search by name, artist, genre
+
+playlist *type* *arg*
+    search matched playlist, can choose between name and playlist ID
+
+chooseplaylist *number*
+    select a playlist from the playlist list
+
+choosesong *number*
+    select a song rom the playlist
+
+addsong *SongID*
+    add a song to playlist
+
+removesong *number*
+    remove a song in the playlist
+
+removeplaylist *Playlist ID*
+    remove a playlist with the playlist ID
+
+
+
 
 --Global commands--
 exit
