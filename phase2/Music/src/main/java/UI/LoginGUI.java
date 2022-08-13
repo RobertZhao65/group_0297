@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import Driver.*;
 
@@ -16,12 +17,15 @@ public class LoginGUI extends JFrame{
 
     AccountManager AM;
     private final JPanel panel = new JPanel();
+    private final JLabel createL = new JLabel("Create or login account:");
     private final JLabel userLabel = new JLabel("Username");
     private final JLabel passwordLabel = new JLabel("Password");
     private final JTextField username = new JTextField(15);
     private final JPasswordField passwordT = new JPasswordField();
     private final JButton login = new JButton("Login");
+    private final JButton create = new JButton("Create new account");
     private final JCheckBox showpassword = new JCheckBox("show password");
+
 
     /**
      * Constructor, creates login window and initializes program
@@ -32,6 +36,9 @@ public class LoginGUI extends JFrame{
         setSize(400, 350);
         panel.setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        createL.setBounds(7, 7, 200, 140);
+        panel.add(createL);
 
         userLabel.setBounds(45, 90, 70, 25);
         panel.add(userLabel);
@@ -53,6 +60,16 @@ public class LoginGUI extends JFrame{
                 loginaction();
             }
         });
+
+        create.setBounds(100, 220, 150, 25);
+        panel.add(create);
+        create.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createaction();
+            }
+        });
+
 
         showpassword.setBounds(220,150, 150, 20);
         panel.add(showpassword);
@@ -109,6 +126,26 @@ public class LoginGUI extends JFrame{
                 }
         );
     }
+
+    /**
+     * User can create new account with username and password
+     */
+    public void createaction(){
+        create.addActionListener(e -> {
+            String user = username.getText();
+            String password = new String(passwordT.getPassword());
+            AM.createAccount(user, password);
+                    try {
+                        AM.updateLog("phase2/music/src/accounts.txt");
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    JOptionPane.showMessageDialog(null, "Account created");
+            new MainGUI(AM);
+        }
+        );
+    }
+
 
     public static void main(String[] args) {
         JFrame frame = new LoginGUI();
