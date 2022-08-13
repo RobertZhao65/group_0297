@@ -1,9 +1,10 @@
 package UI;
-import MusicUtil.Album;
+import MusicUtil.Playlist;
 import MusicUtil.Song;
 
 import javax.swing.*;
 import java.util.List;
+
 
 public class GraphicUI implements UIMethods{
     private static JLabel userLabel;
@@ -130,7 +131,32 @@ public class GraphicUI implements UIMethods{
     }
 
     @Override
-    public boolean displayAlbums(List<Album> albums) {
+    public boolean displayAlbums(List<Playlist> albums) {
         return false;
+    }
+
+    @Override
+    public void share(boolean result) {
+
+    }
+
+    @Override
+    public void viewPlaylist(List<Playlist> playlists) {
+
+    }
+
+    @Override
+    public void removePlaylist(boolean result) {
+
+    }
+
+    @Override
+    public void removeSong(boolean result) {
+
+    }
+
+    @Override
+    public void addSong(boolean result) {
+
     }
 }

@@ -3,6 +3,7 @@ package Commands;
 import Driver.AccountManager;
 import Driver.Program;
 import MusicUtil.Album;
+import MusicUtil.Playlist;
 import UI.TextUI;
 import UI.UIMethods;
 
@@ -16,7 +17,7 @@ public class ViewAlbum extends Command {
     public void executeCommand(Program p, UIMethods UI, List<String> args) throws CommandException {
         checkArguments(args);
         checkLocation(p);
-        List<Album> albums = p.getAlbum(args);
+        List<Playlist> albums = p.getAlbum(args);
         p.setPlaylistSet(albums);
         if(UI.displayAlbums(albums)){
             p.setLocation(2);

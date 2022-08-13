@@ -19,7 +19,7 @@ import java.util.*;
     private static Hashtable<Integer, Song> songMap = new Hashtable<>();
     private static HashMap <String, List<Song> > libraryMap = new HashMap<>();
     private static Integer songCount = 0;
-    private File songFile = new File("songs");
+    private File songFile = new File("phase2/Music/songs");
 
      /**
       * Add song to the list containing all songs
@@ -57,7 +57,9 @@ import java.util.*;
             libraryMap.get(libraryName).add(songMap.get(songIndex));
         }
     }
-
+    public Song getSong(Integer ID){
+        return songMap.get(ID);
+    }
 //     /**
 //      * Add song to music library
 //      *

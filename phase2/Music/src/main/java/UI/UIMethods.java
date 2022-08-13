@@ -5,7 +5,7 @@ package UI;
  *
  * @author Ben Li
  */
-import MusicUtil.Album;
+import MusicUtil.Playlist;
 import MusicUtil.Song;
 
 import java.util.List;
@@ -64,5 +64,11 @@ public interface UIMethods {
 
     public void displayPlaylist(List<Song> f);
 
-    public boolean displayAlbums(List<Album> albums);
+    public boolean displayAlbums(List<Playlist> albums);
+    public void share(boolean result);
+    public void viewPlaylist(List<Playlist> playlists);
+    public void removePlaylist(boolean result);
+    public void removeSong(boolean result);
+    public void addSong(boolean result);
+
 }

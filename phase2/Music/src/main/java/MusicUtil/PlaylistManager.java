@@ -1,9 +1,7 @@
 package MusicUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * Manages playlists
@@ -73,6 +71,7 @@ public class PlaylistManager {
      */
     public int CreatePlaylist(String name, String owner, boolean sharable) {
         CustomPlaylist c = new CustomPlaylist(name, owner);
+        c.setPlaylistID(playlistCounter);
         c.setSharable(sharable);
         playlists.put(playlistCounter, c);
         playlistCounter++;
@@ -83,13 +82,13 @@ public class PlaylistManager {
      * Get playlist
      *
      * @param playlistID ID of the playlist
-     * @param owner      owner of the playlist
+     * @param user      The user who requested the operation
      * @return the list songs from the playlist
      */
-    public List OwnerGetPlaylist(int playlistID, String owner) {
-        Favourite c = favourites.get(playlistID);
-        if (c.owner.equals(owner)) {
-            return c.getMusics();
+    public CustomPlaylist getPlaylist(int playlistID, String user) {
+        CustomPlaylist c = playlists.get(playlistID);
+        if (c.Owner.equals(user)||c.isSharable()||c.getRecipients().contains(user)) {
+            return c;
         } else return null;
     }
 
@@ -98,13 +97,13 @@ public class PlaylistManager {
      *
      * @param playlistID ID of the playlist
      * @param owner      owner of the playlist
-     * @param songID     ID of the song to be removed
+     * @param song     the song to be removed
      * @return true if song has been removed from playlist
      */
-    public boolean removeMusicInPlaylist(int playlistID, String owner, Song songID) {
+    public boolean removeMusicInPlaylist(int playlistID, String owner, Song song) {
         CustomPlaylist c = playlists.get(playlistID);
         if (c.Owner.equals(owner)) {
-            if (c.remove(songID)) {
+            if (c.remove(song)) {
                 playlists.replace(playlistID, c);
                 return true;
             }
@@ -128,16 +127,24 @@ public class PlaylistManager {
     }
 
     /**
-     * Set playlist to public
+     * Set playlist to sharable or not
      *
      * @param playlistID ID of the playlist
      * @param owner      owner of the playlist
+     * @param sharable decide playlist sharable or not
      */
-    public void setPlaylistPublic(int playlistID, String owner) {
+    public boolean setPlaylistSharable(int playlistID, String owner, boolean sharable) {
+        try{playlists.get(playlistID);}
+            catch(Exception e){
+            return false;
+            }
         CustomPlaylist c = playlists.get(playlistID);
-        c.setSharable(true);
+        if(c.Owner.equals(owner)){
+        c.setSharable(sharable);
         playlists.replace(playlistID, c);
-
+        return true;
+        }
+        return false;
     }
 
     /**
@@ -168,7 +175,28 @@ public class PlaylistManager {
         }
         return result;
     }
-
+    public boolean addSongToPlaylist(Integer ID,String user, Song song){
+        try{
+            CustomPlaylist c=playlists.get(ID);
+        }catch (NullPointerException e){
+            System.out.println("The playlist does not exists");
+            return false;
+        }
+        CustomPlaylist c=playlists.get(ID);
+        if (c.Owner.equals(user)){
+            c.add(new ArrayList<Song>(Arrays.asList(song)));
+            playlists.replace(ID,c);
+            return true;
+        }
+        return false;
+    }
+    public boolean removePlaylist(Integer ID){
+        if(playlists.containsKey(ID)){
+            playlists.remove(ID);
+            return true;
+        }
+        return false;
+    }
     /**
      * Create an album
      *
@@ -292,14 +320,23 @@ public class PlaylistManager {
      * Remove song from favourite playlist
      *
      * @param owner owner of favourite playlist
-     * @param songID ID of the target song
+     * @param song the target song
      * @return true if song has been removed from favourite playlist
      */
 
-    public boolean removeFavMusic(String owner, Song songID) {
+    public boolean removeFavMusic(String owner, Song song) {
         Favourite f = favourites.get(owner);
-        if (f.remove(songID)) {
+        if (f.remove(song)) {
             favourites.replace(owner, f);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addFavMusic(String owner, Song song){
+        Favourite f =favourites.get(owner);
+        if (f.add(new ArrayList<Song>(Arrays.asList(song)))){
+            favourites.replace(owner,f);
             return true;
         }
         return false;
@@ -318,15 +355,15 @@ public class PlaylistManager {
     }
 
     /**
-     * Set the favourite playlist to public
+     * Set the favourite playlist harable or not
      *
      * @param owner owner of the playlist
+     * @param sharable owner's choice on favourite sharable or not
      */
-    public void setFavouritePublic(String owner) {
+    public void setFavouriteSharale(String owner, boolean sharable) {
         Favourite f = favourites.get(owner);
-        f.setSharable(true);
+        f.setSharable(sharable);
         favourites.replace(owner, f);
-
     }
 
     /**
